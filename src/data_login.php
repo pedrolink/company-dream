@@ -22,6 +22,7 @@ if($row == 1) {
 	$_SESSION['name'] = $user_db['name'];
 	$_SESSION['user'] = $user_db['user'];
 	$_SESSION['email'] = $user_db['email'];
+	$_SESSION['id'] = $user_db['id'];
 	header('Location: form_jobs.php');
 	exit();
 } else {
