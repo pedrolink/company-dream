@@ -11,7 +11,7 @@ if(empty($_POST['user']) || empty($_POST['password'])) {
 $user = mysqli_real_escape_string($conection, $_POST['user']);
 $password = mysqli_real_escape_string($conection, $_POST['password']);
 
-$query = "SELECT * FROM users WHERE user = '{$user}' AND senha = md5('{$password}')";
+$query = "SELECT * FROM users WHERE user = '{$user}' AND password = md5('{$password}')";
 
 $result = mysqli_query($conection, $query);
 
@@ -21,6 +21,7 @@ if($row == 1) {
 	$user_db = mysqli_fetch_array($result);
 	$_SESSION['name'] = $user_db['name'];
 	$_SESSION['user'] = $user_db['user'];
+	$_SESSION['email'] = $user_db['email'];
 	header('Location: form_jobs.php');
 	exit();
 } else {
