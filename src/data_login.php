@@ -23,7 +23,7 @@ if($row == 1) {
 	$_SESSION['user'] = $user_db['user'];
 	$_SESSION['email'] = $user_db['email'];
 	$_SESSION['id'] = $user_db['id'];
-	header('Location: form_jobs.php');
+	header('Location: form_painel.php');
 	exit();
 } else {
 	$_SESSION['not_authenticate'] = true;
