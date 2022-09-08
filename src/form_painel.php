@@ -1,5 +1,14 @@
 <?php
+include("conection.php");
 session_start();
+$sql_user = 'SELECT * FROM users WHERE user = "' . $_SESSION['user'] . '"';
+$result_user = mysqli_query($conection, $sql_user);
+$row_user = mysqli_fetch_array($result_user);
+
+$sql_user_address = 'SELECT * FROM user_address WHERE user_id = "' . $row_user['id'] . '"';
+$result_user_address = mysqli_query($conection, $sql_user_address);
+$row_user_address = mysqli_fetch_array($result_user_address);
+
 ?>
 
 <!DOCTYPE html>
