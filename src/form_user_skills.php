@@ -1,0 +1,108 @@
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Configurações do Perfil /</span> Competências
+        </h4>
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills flex-column flex-md-row mb-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="?main_menu=user_profile"><i class="bx bx-user me-1"></i> Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-bookmark-plus me-1"></i>
+                            Competências</a>
+                    </li>
+                </ul>
+                <div class="card mb-4">
+                    <h5 class="card-header">Competências do Perfil</h5>
+                    <hr class="my-0">
+                    <div class="card-body">
+                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                            <div class="row">
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="carrer-focus">Foco na carreira</label>
+                                    <div class="input-group input-group-merge">
+                                        <span id="icon-carrer-focus" class="input-group-text"><i
+                                                class="bx bx-code-alt"></i></span>
+                                        <select id="carrer_focus" name="carrer_focus" class="select2 form-select"
+                                            aria-describedby="icon-carrer-focus">
+                                            <option value="">Selecione um item</option>
+                                            <option value="1">Back-End</option>
+                                            <option value="2">Front-End</option>
+                                            <option value="3">Full Stack</option>
+                                            <option value="4">Mobile</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="experience_level">Nível de Experiência</label>
+                                    <div class="input-group input-group-merge">
+                                        <span id="icon-level-experience" class="input-group-text"><i
+                                                class="bx bx-line-chart"></i></span>
+                                        <select id="experience_level" class="select2 form-select"
+                                            aria-describedby="icon-level-experience">
+                                            <option value="">Selecione um item</option>
+                                            <option value="1">Júnior</option>
+                                            <option value="2">Pleno</option>
+                                            <option value="3">Sênior</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="english_level">Nível de Inglês</label>
+                                    <div class="input-group input-group-merge">
+                                        <span id="icon-level-experience" class="input-group-text"><i
+                                                class="bx bx-comment-dots"></i></span>
+                                        <select id="english_level" class="select2 form-select"
+                                            aria-describedby="icon-level-experience">
+                                            <option value="">Selecione um item</option>
+                                            <option value="1">Básico</option>
+                                            <option value="2">Intermediário</option>
+                                            <option value="3">Avançado</option>
+                                            <option value="4">Fluente</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label" for="salary">Média Salarial (mensal)</label>
+                                    <div class="input-group input-group-merge">
+                                        <span id="icon-level-experience" class="input-group-text"><i
+                                                class="bx bx-money"></i></span>
+                                        <input type="text" class="form-control" id="salary" name="salary"
+                                        placeholder="Exemplo: R$ 5.000,00">
+                                    </div>
+                                </div>
+
+                                <h6 class="mt-4">Informe suas habilidades</h6>
+                                <hr class="my-0">
+
+                                <?php include("./utils/initial_skills.php") ?>                                
+
+                                <div class="mt-2">
+                                    <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
+                                    <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /Account -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Content -->
+
+    <?php include("./partials/_footer_user_profile.php") ?>
+
+    <div class="content-backdrop fade"></div>
+</div>
+
+<?php include("./utils/scripts/masks.php") ?>

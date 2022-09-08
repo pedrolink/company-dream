@@ -12,8 +12,8 @@
                             Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?main_menu=user_skills"><i
-                                class="bx bx-bookmark-plus me-1"></i> Competências</a>
+                        <a class="nav-link" href="?main_menu=user_skills"><i class="bx bx-bookmark-plus me-1"></i>
+                            Competências</a>
                     </li>
                 </ul>
                 <div class="card mb-4">
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="zipCode" class="form-label">CEP</label>
-                                    <input type="text" class="form-control" id="zipCode" name="zipCode" maxlength="6">
+                                    <input type="text" class="form-control" id="zipCode" name="zipCode" maxlength="8">
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="country">Estado</label>
@@ -86,8 +86,18 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="linkedin" class="form-label">Perfil LinkedIn</label>
-                                    <input type="text" class="form-control" id="linkedin" name="linkedin" maxlength="6"
+                                    <input type="text" class="form-control" id="linkedin" name="linkedin"
                                         placeholder="https://www.linkedin.com/in/usuario/">
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="urlCloud" class="form-label">GitHub / GitLab / Stack url</label>
+                                    <input type="text" class="form-control" id="urlCloud" name="urlCloud"
+                                        placeholder="Ex: https://www.github.com/my-repo">
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="descriptionUser" class="form-label">Descrição do Perfil</label>
+                                    <textarea class="form-control" id="descriptionUser" name="descriptionUser"
+                                        rows="5"></textarea>
                                 </div>
                                 <div class="mt-2">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
@@ -97,28 +107,37 @@
                     </div>
                     <!-- /Account -->
                 </div>
-                <div class="card">
-                    <h5 class="card-header">Deletar Conta</h5>
-                    <div class="card-body">
-                        <div class="mb-3 col-12 mb-0">
-                            <div class="alert alert-warning">
-                                <h6 class="alert-heading fw-bold mb-1">Você tem certeza que deseja deletar sua conta?
-                                </h6>
-                                <p class="mb-0">Se você deletar sua conta, você não poderá acessar mais o site, marque a
-                                    opção abaixo se deseja deletar.
-                                </p>
-                            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card">
+                <h5 class="card-header">Deletar Conta</h5>
+                <div class="card-body">
+                    <div class="mb-3 col-12 mb-0">
+                        <div class="alert alert-warning">
+                            <h6 class="alert-heading fw-bold mb-1">Você tem certeza que deseja deletar sua
+                                conta?
+                            </h6>
+                            <p class="mb-0">Se você deletar sua conta, você não poderá acessar mais o site,
+                                marque a
+                                opção abaixo se deseja deletar.
+                            </p>
                         </div>
-                        <form id="formAccountDeactivation" onsubmit="return false">
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" name="accountActivation"
-                                    id="accountActivation">
-                                <label class="form-check-label" for="accountActivation">Eu confirmo que quero deletar
-                                    minha conta</label>
-                            </div>
-                            <button type="submit" class="btn btn-danger deactivate-account">Deletar conta</button>
-                        </form>
                     </div>
+                    <form id="formAccountDeactivation" onsubmit="return false">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="accountActivation"
+                                id="accountActivation">
+                            <label class="form-check-label" for="accountActivation">Eu confirmo que quero
+                                deletar
+                                minha conta</label>
+                        </div>
+                        <button type="submit" class="btn btn-danger deactivate-account">Deletar
+                            conta</button>
+                    </form>
                 </div>
             </div>
         </div>

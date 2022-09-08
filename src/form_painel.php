@@ -125,7 +125,7 @@ session_start();
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="pages-account-settings-account.html" class="menu-link">
+                                <a href="?main_menu=user_profile" class="menu-link">
                                     <div data-i18n="Account">Account</div>
                                 </a>
                             </li>
