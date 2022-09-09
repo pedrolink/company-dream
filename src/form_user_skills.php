@@ -32,11 +32,7 @@
                                                 class="bx bx-code-alt"></i></span>
                                         <select id="carrer_focus" name="carrer_focus" class="select2 form-select"
                                             aria-describedby="icon-carrer-focus">                                            
-                                            <option value="">Selecione um item</option>
-                                            <option value="1">Back-End</option>
-                                            <option value="2">Front-End</option>
-                                            <option value="3">Full Stack</option>
-                                            <option value="4">Mobile</option>
+                                            <?php include("./utils/sql_selects/user_skill_carrer_focus.php") ?>
                                         </select>
                                     </div>
                                 </div>
@@ -48,10 +44,7 @@
                                                 class="bx bx-line-chart"></i></span>
                                         <select id="experience_level" name="experience_level" class="select2 form-select"
                                             aria-describedby="icon-level-experience">
-                                            <option value="">Selecione um item</option>
-                                            <option value="1">Júnior</option>
-                                            <option value="2">Pleno</option>
-                                            <option value="3">Sênior</option>
+                                            <?php include("./utils/sql_selects/user_skill_experience_level.php") ?>
                                         </select>
                                     </div>
                                 </div>
@@ -63,23 +56,7 @@
                                                 class="bx bx-comment-dots"></i></span>
                                         <select id="english_level" name="english_level" class="select2 form-select"
                                             aria-describedby="icon-level-experience">
-                                            <?php 
-                                            if($row_user_experience['name_english']){
-                                                $sql_select_english_level = 'SELECT * FROM english_levels WHERE id_english != "' . $row_user_experience['id_ensligh'] . '"';
-                                                $result_select_english_level = mysqli_query($conection, $sql_select_english_level);
-                                                echo '<option value=' . $row_user_experience['id_english'] . '>' . $row_user_experience['name_english'] . '</option>';
-                                                while($row_select_ensligh_level = mysqli_fetch_array($result_select_english_level)){
-                                                    echo '<option value=' . $row_select_ensligh_level['id_english'] . '>' . $row_select_ensligh_level['name_english'] . '</option>';
-                                                }
-                                            } else {
-                                                echo '<option value="">Selecione um item</option>
-                                                      <option value="1">Básico</option>
-                                                      <option value="2">Intermediário</option>
-                                                      <option value="3">Avançado</option>
-                                                      <option value="4">Fluente</option>';
-                                            }
-                                            ?>
-                                            
+                                            <?php include("./utils/sql_selects/user_skill_english_level.php") ?>                                            
                                         </select>
                                     </div>
                                 </div>
@@ -90,7 +67,7 @@
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-money"></i></span>
                                         <input type="text" class="form-control" id="salary" name="salary"
-                                            placeholder="Exemplo: R$ 5.000,00">
+                                            placeholder="Exemplo: R$ 5.000,00" value="<?php echo number_format($row_user_experience['salary'], 2, ',', '.') ?>">
                                     </div>
                                 </div>
 

@@ -58,5 +58,4 @@ $conection->close();
 
 header('Location: form_painel.php?main_menu=user_skills');
 exit;
-
 ?>
