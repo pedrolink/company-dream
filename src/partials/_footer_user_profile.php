@@ -10,14 +10,14 @@
             <a href="https://github.com/pedrolink" target="_blank" class="footer-link fw-bolder">Pedro Link</a>
         </div>
         <div>
-            <a href="https://github.com/pedrolink" class="footer-link me-4" target="_blank">License</a>
-            <a href="https://github.com/pedrolink" target="_blank" class="footer-link me-4">More Themes</a>
+            <a href="https://github.com/pedrolink" class="footer-link me-4" target="_blank">Licença</a>
+            <a href="https://github.com/pedrolink" target="_blank" class="footer-link me-4">Mais Temas</a>
 
             <a href="https://github.com/pedrolink" target="_blank"
-                class="footer-link me-4">Documentation</a>
+                class="footer-link me-4">Documentação</a>
 
             <a href="https://github.com/pedrolink" target="_blank"
-                class="footer-link me-4">Support</a>
+                class="footer-link me-4">Suporte</a>
         </div>
     </div>
 </footer>

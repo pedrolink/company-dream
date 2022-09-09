@@ -9,6 +9,10 @@ $sql_user_address = 'SELECT * FROM user_address WHERE user_id = "' . $row_user['
 $result_user_address = mysqli_query($conection, $sql_user_address);
 $row_user_address = mysqli_fetch_array($result_user_address);
 
+$sql_user_experience = 'SELECT * FROM user_experience INNER JOIN english_levels ON user_experience.english_level = english_levels.id_english WHERE user_id = "' . $row_user['id'] . '"';
+$result_user_experience = mysqli_query($conection, $sql_user_experience);
+$row_user_experience = mysqli_fetch_array($result_user_experience);
+
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +74,7 @@ $row_user_address = mysqli_fetch_array($result_user_address);
                             </svg>
                         </span>
                         <span class="app-brand-text demo menu-text fw-bolder ms-2">Company</span>
+                        <?php echo $row_user_experience['name_english'] ?>
                     </a>
 
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">

@@ -22,7 +22,9 @@ if($row == 1) {
 	$_SESSION['name'] = $user_db['name'];
 	$_SESSION['user'] = $user_db['user'];
 	$_SESSION['email'] = $user_db['email'];
-	$_SESSION['user_id'] = $user_db['user_id'];
+	$_SESSION['user_id'] = $user_db['id'];
+	//TODO: Lembrar de fazer autenticação do usuário quando logar
+	$_SESSION['user_authenticate'] = true;
 	header('Location: form_painel.php');
 	exit();
 } else {

@@ -20,7 +20,6 @@ $user_image = $_FILES['file'];
 $file_temp = $user_image['tmp_name'];
 $file_size = $user_image['size'];
 $location = 'images/user/';
-echo $user_image;
 
 // $user_image = trim($_POST['user_image']);
 

@@ -2,6 +2,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
+    <?php include("./exceptions/message_user_skills.php") ?>
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Configurações do Perfil /</span> Competências
         </h4>
 
@@ -21,7 +22,7 @@
                     <h5 class="card-header">Competências do Perfil</h5>
                     <hr class="my-0">
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" onsubmit="return false">
+                        <form action="data_user_skills.php" method="POST">
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
@@ -30,7 +31,7 @@
                                         <span id="icon-carrer-focus" class="input-group-text"><i
                                                 class="bx bx-code-alt"></i></span>
                                         <select id="carrer_focus" name="carrer_focus" class="select2 form-select"
-                                            aria-describedby="icon-carrer-focus">
+                                            aria-describedby="icon-carrer-focus">                                            
                                             <option value="">Selecione um item</option>
                                             <option value="1">Back-End</option>
                                             <option value="2">Front-End</option>
@@ -45,7 +46,7 @@
                                     <div class="input-group input-group-merge">
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-line-chart"></i></span>
-                                        <select id="experience_level" class="select2 form-select"
+                                        <select id="experience_level" name="experience_level" class="select2 form-select"
                                             aria-describedby="icon-level-experience">
                                             <option value="">Selecione um item</option>
                                             <option value="1">Júnior</option>
@@ -60,13 +61,25 @@
                                     <div class="input-group input-group-merge">
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-comment-dots"></i></span>
-                                        <select id="english_level" class="select2 form-select"
+                                        <select id="english_level" name="english_level" class="select2 form-select"
                                             aria-describedby="icon-level-experience">
-                                            <option value="">Selecione um item</option>
-                                            <option value="1">Básico</option>
-                                            <option value="2">Intermediário</option>
-                                            <option value="3">Avançado</option>
-                                            <option value="4">Fluente</option>
+                                            <?php 
+                                            if($row_user_experience['name_english']){
+                                                $sql_select_english_level = 'SELECT * FROM english_levels WHERE id_english != "' . $row_user_experience['id_ensligh'] . '"';
+                                                $result_select_english_level = mysqli_query($conection, $sql_select_english_level);
+                                                echo '<option value=' . $row_user_experience['id_english'] . '>' . $row_user_experience['name_english'] . '</option>';
+                                                while($row_select_ensligh_level = mysqli_fetch_array($result_select_english_level)){
+                                                    echo '<option value=' . $row_select_ensligh_level['id_english'] . '>' . $row_select_ensligh_level['name_english'] . '</option>';
+                                                }
+                                            } else {
+                                                echo '<option value="">Selecione um item</option>
+                                                      <option value="1">Básico</option>
+                                                      <option value="2">Intermediário</option>
+                                                      <option value="3">Avançado</option>
+                                                      <option value="4">Fluente</option>';
+                                            }
+                                            ?>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -77,16 +90,27 @@
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-money"></i></span>
                                         <input type="text" class="form-control" id="salary" name="salary"
-                                        placeholder="Exemplo: R$ 5.000,00">
+                                            placeholder="Exemplo: R$ 5.000,00">
                                     </div>
                                 </div>
 
                                 <h6 class="mt-4">Informe suas habilidades</h6>
                                 <hr class="my-0">
 
-                                <?php include("./utils/initial_skills.php") ?>                                
+                                <?php //include("./utils/initial_skills.php") ?>
 
-                                <div class="mt-2">
+                                <!-- <div class="col-md-12">
+                                    <div class="row" id="container1">
+
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="mb-3 col-md-6">
+                                    <button id="add_form_field" class="btn btn-dark col-md-12">Adicionar
+                                        uma habilidade</button>
+                                </div> -->
+
+                                <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
                                     <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                                 </div>
@@ -105,4 +129,5 @@
     <div class="content-backdrop fade"></div>
 </div>
 
-<?php include("./utils/scripts/masks.php") ?>
+<?php // include ("./utils/scripts/add_skill.php") ?>
+<?php // include("./utils/scripts/masks.php") ?>

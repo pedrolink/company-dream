@@ -3,11 +3,9 @@
         indique quantos anos de experiência</label>
     <div class="input-group input-group-merge">
         <span id="icon-level-experience" class="input-group-text"><i class="bx bx-book"></i></span>
-        <select id="country" class="select2 form-select" aria-describedby="icon-level-experience">
+        <select class="select2 form-select" name="select_skills_1" aria-describedby="icon-level-experience">
             <option value=""></option>
-            <option value="junior">Júnior</option>
-            <option value="pleno">Pleno</option>
-            <option value="senior">Sênior</option>
+            <?php include("skills.php") ?>
         </select>
         <button type="button" class="btn btn-icon btn-outline-danger">
             <i class="bx bx-trash-alt"></i>
@@ -27,11 +25,9 @@
         indique quantos anos de experiência</label>
     <div class="input-group input-group-merge">
         <span id="icon-level-experience" class="input-group-text"><i class="bx bx-book"></i></span>
-        <select id="country" class="select2 form-select" aria-describedby="icon-level-experience">
+        <select class="select2 form-select" name="select_skills_2" aria-describedby="icon-level-experience">
             <option value=""></option>
-            <option value="junior">Júnior</option>
-            <option value="pleno">Pleno</option>
-            <option value="senior">Sênior</option>
+            <?php include("skills.php") ?>
         </select>
         <button type="button" class="btn btn-icon btn-outline-danger">
             <i class="bx bx-trash-alt"></i>
@@ -51,11 +47,9 @@
         indique quantos anos de experiência</label>
     <div class="input-group input-group-merge">
         <span id="icon-level-experience" class="input-group-text"><i class="bx bx-book"></i></span>
-        <select id="country" class="select2 form-select" aria-describedby="icon-level-experience">
+        <select class="select2 form-select" name="select_skills_3" aria-describedby="icon-level-experience">
             <option value=""></option>
-            <option value="junior">Júnior</option>
-            <option value="pleno">Pleno</option>
-            <option value="senior">Sênior</option>
+            <?php include("skills.php") ?>
         </select>
         <button type="button" class="btn btn-icon btn-outline-danger">
             <i class="bx bx-trash-alt"></i>
