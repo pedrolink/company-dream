@@ -9,10 +9,10 @@ $row_job = mysqli_fetch_array($result_job);
 ?>
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <?php include("./exceptions/message_user_profile.php") ?>
+        <?php include("./exceptions/message_view_jobs.php") ?>
         <form action="data_candidate.php" method="POST">
+            <input type="hidden" name="job_id" value="<?php echo $_GET['job_id'] ?>">
             <div class="row mb-5">
-
                 <div class="col-md-6 col-xl-4">
                     <div class="card bg-dark border-0 text-white">
                         <img class="card-img" src="../assets/img/elements/11.jpg" alt="Card image">
