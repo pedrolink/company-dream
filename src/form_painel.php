@@ -236,6 +236,10 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
             if ($_GET['main_menu'] == 'create_jobs') {
                 include './form_create_jobs.php';
             }
+
+            if ($_GET['main_menu'] == 'view_job') {
+                include './form_view_job.php';
+            }
         }
         ?>
             </div>

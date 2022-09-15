@@ -11,8 +11,8 @@ $salary = trim(str_replace(',', '.', str_replace('.', '', $_POST['salary'])));
 $job_description = trim($_POST['job_description']);
 $user_id = $_SESSION['user_id'];
 
-$sql_insert_job = "INSERT INTO rh_jobs (name, description, salary, english_level, experience_level, carrer_focus, local) 
-                               VALUES ('$job_name', '$job_description', '$salary', '$english_level', '$experience_level', '$carrer_focus', 'Remoto')";                        
+$sql_insert_job = "INSERT INTO rh_jobs (name, 'office', description, salary, english_level, experience_level, carrer_focus, local) 
+                               VALUES ('$job_name', '$office', '$job_description', '$salary', '$english_level', '$experience_level', '$carrer_focus', 'Remoto')";                        
 
 if($conection->query($sql_insert_job) === TRUE){
     $_SESSION['insert_job_success'] = true;
