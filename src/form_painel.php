@@ -1,6 +1,7 @@
 <?php
 include("conection.php");
 session_start();
+
 $sql_user = 'SELECT * FROM users WHERE user = "' . $_SESSION['user'] . '"';
 $result_user = mysqli_query($conection, $sql_user);
 $row_user = mysqli_fetch_array($result_user);
@@ -148,11 +149,13 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <!-- Search -->
                         <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search...">
-                            </div>
+                            <form method="GET" id="search_form">
+                                <div class="nav-item d-flex align-items-center">
+                                    <i class="bx bx-search fs-4 lh-0"></i>
+                                    <input type="text" class="form-control border-0 shadow-none" name="search" id="search" placeholder="Procurar..."
+                                        aria-label="Procurar...">
+                                </div>
+                            </form>
                         </div>
                         <!-- /Search -->
 
@@ -252,6 +255,16 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
             document.getElementById(id).className = 'menu-item active';
             
         }
+
+        // SEARCH INPUT
+        var input = document.getElementById("search");
+        input.addEventListener("keypress", function(event) {
+
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("search_form").submit();
+        }
+        });
     </script>
 </body>
 

@@ -4,7 +4,7 @@
         <div class="row mb-5">
             <?php
             $cont_job = 0;
-            while($row_jobs = mysqli_fetch_array($result_jobs)):            
+            while($row_jobs = mysqli_fetch_array($result_jobs)):    
             ?>
             <?php if($cont_job == 0): $cont_job = 1;?>
             <div class="col-md">
