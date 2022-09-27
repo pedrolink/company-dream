@@ -1,3 +1,12 @@
+<?php
+
+$sql_jobs = 'SELECT * FROM rh_jobs
+INNER JOIN english_levels ON rh_jobs.english_level = english_levels.id_english 
+INNER JOIN carrers_focus ON rh_jobs.carrer_focus = carrers_focus.id_carrer
+INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience';
+$result_jobs = mysqli_query($conection, $sql_jobs);
+?>
+
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <?php include("./exceptions/error_message_login_user.php") ?>
