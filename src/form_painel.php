@@ -105,9 +105,17 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                         </a>
 
                         <ul class="menu-sub">
-                            <li class="menu-item" id="cadastro_vaga" onclick="open_view('cadastro_vaga')">
+                            <li class="menu-item" id="cadastro_vaga">
                                 <a href="?main_menu=create_jobs" class="menu-link">
                                     <div data-i18n="Without menu">Cadastrar Vagas</div>
+                                </a>
+                            </li>                            
+                        </ul>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item" id="cadastro_vaga">
+                                <a href="?main_menu=analytic_jobs" class="menu-link">
+                                    <div data-i18n="Without menu">Análise Vagas</div>
                                 </a>
                             </li>                            
                         </ul>
@@ -236,6 +244,18 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
 
             if ($_GET['main_menu'] == 'view_job') {
                 include './form_view_job.php';
+            }
+
+            if ($_GET['main_menu'] == 'analytic_jobs') {
+                include 'form_analytic_jobs.php';
+            }
+
+            if ($_GET['main_menu'] == 'edit_job') {
+                include 'form_edit_job.php';
+            }
+
+            if ($_GET['main_menu'] == 'talent_jobs') {
+                include 'form_talent_jobs.php';
             }
         }
         ?>

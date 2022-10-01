@@ -1,9 +1,13 @@
 <?php
-
+$condition = '';
+if (isset($_GET['search'])){
+    $condition .= ' AND name LIKE "%' . $_GET['search'] . '%"';
+}
 $sql_jobs = 'SELECT * FROM rh_jobs
 INNER JOIN english_levels ON rh_jobs.english_level = english_levels.id_english 
 INNER JOIN carrers_focus ON rh_jobs.carrer_focus = carrers_focus.id_carrer
-INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience';
+INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience
+WHERE active = 0' . $condition;
 $result_jobs = mysqli_query($conection, $sql_jobs);
 ?>
 

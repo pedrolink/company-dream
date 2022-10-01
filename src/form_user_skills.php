@@ -56,7 +56,7 @@
                                                 class="bx bx-comment-dots"></i></span>
                                         <select id="english_level" name="english_level" class="select2 form-select"
                                             aria-describedby="icon-level-experience">
-                                            <?php include("./utils/sql_selects/user_skill_english_level.php") ?>                                            
+                                            <?php include("./utils/sql_selects/user_skill_english_level.php") ?>
                                         </select>
                                     </div>
                                 </div>
