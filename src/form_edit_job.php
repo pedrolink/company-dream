@@ -105,4 +105,5 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
             </div>
         </div>
     </div>
+    <?php include("./partials/_footer_user_profile.php") ?>
 </div>

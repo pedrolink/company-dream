@@ -257,6 +257,10 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
             if ($_GET['main_menu'] == 'talent_jobs') {
                 include 'form_talent_jobs.php';
             }
+
+            if ($_GET['main_menu'] == 'analytic_user_jobs') {
+                include 'form_analytic_users_jobs.php';
+            }
         }
         ?>
             </div>
