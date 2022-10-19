@@ -1,24 +1,24 @@
-<div class="content-wrapper">
-    <!-- Content -->
+<?php
+$sql_edit_job = 'SELECT * FROM rh_jobs
+INNER JOIN english_levels ON rh_jobs.english_level = english_levels.id_english 
+INNER JOIN carrers_focus ON rh_jobs.carrer_focus = carrers_focus.id_carrer
+INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience
+WHERE id = ' . $_GET['id'];
+$result_edit_job = mysqli_query($conection, $sql_edit_job);
+$row_edit_job = mysqli_fetch_array($result_edit_job);
+?>
 
+<div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <?php include("./exceptions/message_create_job.php") ?>
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Recursos Humanos /</span> Cadastro de Vagas
-        </h4>
+        <h4 class="fw-bold py-3 mb-4">Edição de vagas</h4>
 
         <div class="row">
             <div class="col-md-12">
-                <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-briefcase me-1"></i>
-                            Vagas</a>
-                    </li>
-                </ul>
                 <div class="card mb-4">
-                    <h5 class="card-header">Informações da Vaga</h5>
-                    <hr class="my-0">
                     <div class="card-body">
-                        <form action="data_create_job.php" method="POST">
+                        <form action="data_edit_job.php" method="POST">
+                            <input type="hidden" value="<?php echo $_GET['id'] ?>" name="job_id">
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
@@ -26,7 +26,7 @@
                                     <div class="input-group input-group-merge">
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-code-curly"></i></span>
-                                        <input type="text" class="form-control" id="job_name" name="job_name">
+                                        <input type="text" class="form-control" id="job_name" name="job_name" value="<?php echo $row_edit_job['name'] ?>">
                                     </div>
                                 </div>
 
@@ -35,7 +35,7 @@
                                     <div class="input-group input-group-merge">
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-user-pin"></i></span>
-                                        <input type="text" class="form-control" id="office" name="office">
+                                        <input type="text" class="form-control" id="office" name="office" value="<?php echo $row_edit_job['office'] ?>">
                                     </div>
                                 </div>
 
@@ -46,11 +46,7 @@
                                                 class="bx bx-code-alt"></i></span>
                                         <select id="carrer_focus" name="carrer_focus" class="select2 form-select"
                                             aria-describedby="icon-carrer-focus">
-                                            <option value="">Selecione um item</option>
-                                            <option value="1">Back-End</option>
-                                            <option value="2">Front-End</option>
-                                            <option value="3">Full Stack</option>
-                                            <option value="4">Mobile</option>
+                                            <?php include("./utils/sql_selects/job_skill_focus.php") ?>
                                         </select>
                                     </div>
                                 </div>
@@ -62,10 +58,7 @@
                                                 class="bx bx-line-chart"></i></span>
                                         <select id="experience_level" name="experience_level"
                                             class="select2 form-select" aria-describedby="icon-level-experience">
-                                            <option value="">Selecione um item</option>
-                                            <option value="1">Júnior</option>
-                                            <option value="2">Pleno</option>
-                                            <option value="3">Sênior</option>
+                                            <?php include("./utils/sql_selects/job_experience_level.php") ?>
                                         </select>
                                     </div>
                                 </div>
@@ -77,11 +70,7 @@
                                                 class="bx bx-comment-dots"></i></span>
                                         <select id="english_level" name="english_level" class="select2 form-select"
                                             aria-describedby="icon-level-experience">
-                                            <option value="">Selecione um item</option>
-                                            <option value="1">Básico</option>
-                                            <option value="2">Intermediário</option>
-                                            <option value="3">Avançado</option>
-                                            <option value="4">Fluente</option>
+                                            <?php include("./utils/sql_selects/job_english_level.php") ?>
                                         </select>
                                     </div>
                                 </div>
@@ -92,14 +81,14 @@
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-money"></i></span>
                                         <input type="text" class="form-control" id="salary" name="salary"
-                                            placeholder="Exemplo: R$ 5.000,00">
+                                            placeholder="Exemplo: R$ 5.000,00" value="<?php echo number_format($row_edit_job['salary'], 2, ',', '.') ?>">
                                     </div>
                                 </div>
 
                                 <div class="mb-3 col-md-12">
                                     <label for="descriptionUser" class="form-label">Descrição da Vaga</label>
                                     <textarea class="form-control" id="job_description" name="job_description"
-                                        rows="3"></textarea>
+                                        rows="3"><?php echo $row_edit_job['description'] ?></textarea>
                                 </div>
 
                                 <h6 class="mt-4">Habilidades da Vaga</h6>
@@ -112,14 +101,9 @@
                             </div>
                         </form>
                     </div>
-                    <!-- /Account -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- / Content -->
-
     <?php include("./partials/_footer_user_profile.php") ?>
-
-    <div class="content-backdrop fade"></div>
 </div>

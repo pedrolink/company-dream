@@ -1,6 +1,7 @@
 <?php
 include("conection.php");
 session_start();
+
 $sql_user = 'SELECT * FROM users WHERE user = "' . $_SESSION['user'] . '"';
 $result_user = mysqli_query($conection, $sql_user);
 $row_user = mysqli_fetch_array($result_user);
@@ -16,12 +17,6 @@ $sql_user_experience = 'SELECT * FROM user_experience
                         WHERE user_id = "' . $row_user['id'] . '"';                     
 $result_user_experience = mysqli_query($conection, $sql_user_experience);
 $row_user_experience = mysqli_fetch_array($result_user_experience);
-
-$sql_jobs = 'SELECT * FROM rh_jobs
-             INNER JOIN english_levels ON rh_jobs.english_level = english_levels.id_english 
-             INNER JOIN carrers_focus ON rh_jobs.carrer_focus = carrers_focus.id_carrer
-             INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience';
-$result_jobs = mysqli_query($conection, $sql_jobs);
 
 ?>
 
@@ -110,9 +105,17 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                         </a>
 
                         <ul class="menu-sub">
-                            <li class="menu-item" id="cadastro_vaga" onclick="open_view('cadastro_vaga')">
+                            <li class="menu-item" id="cadastro_vaga">
                                 <a href="?main_menu=create_jobs" class="menu-link">
                                     <div data-i18n="Without menu">Cadastrar Vagas</div>
+                                </a>
+                            </li>                            
+                        </ul>
+
+                        <ul class="menu-sub">
+                            <li class="menu-item" id="cadastro_vaga">
+                                <a href="?main_menu=analytic_jobs" class="menu-link">
+                                    <div data-i18n="Without menu">Análise Vagas</div>
                                 </a>
                             </li>                            
                         </ul>
@@ -148,11 +151,13 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <!-- Search -->
                         <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search...">
-                            </div>
+                            <form method="GET" id="search_form">
+                                <div class="nav-item d-flex align-items-center">
+                                    <i class="bx bx-search fs-4 lh-0"></i>
+                                    <input type="text" class="form-control border-0 shadow-none" name="search" id="search" placeholder="Procurar..."
+                                        aria-label="Procurar...">
+                                </div>
+                            </form>
                         </div>
                         <!-- /Search -->
 
@@ -240,6 +245,22 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
             if ($_GET['main_menu'] == 'view_job') {
                 include './form_view_job.php';
             }
+
+            if ($_GET['main_menu'] == 'analytic_jobs') {
+                include 'form_analytic_jobs.php';
+            }
+
+            if ($_GET['main_menu'] == 'edit_job') {
+                include 'form_edit_job.php';
+            }
+
+            if ($_GET['main_menu'] == 'talent_jobs') {
+                include 'form_talent_jobs.php';
+            }
+
+            if ($_GET['main_menu'] == 'analytic_user_jobs') {
+                include 'form_analytic_users_jobs.php';
+            }
         }
         ?>
             </div>
@@ -252,6 +273,16 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
             document.getElementById(id).className = 'menu-item active';
             
         }
+
+        // SEARCH INPUT
+        var input = document.getElementById("search");
+        input.addEventListener("keypress", function(event) {
+
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("search_form").submit();
+        }
+        });
     </script>
 </body>
 
