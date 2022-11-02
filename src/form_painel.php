@@ -143,7 +143,7 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
 
                         <ul class="menu-sub">
                             <li class="menu-item" id="cadastro_vaga">
-                                <a href="?main_menu=create_jobs" class="menu-link">
+                                <a href="?main_menu=admin_panel" class="menu-link">
                                     <div data-i18n="Without menu">Painel Administrativo</div>
                                 </a>
                             </li>
@@ -273,6 +273,14 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
 
             if ($_GET['main_menu'] == 'analytic_user_jobs') {
                 include 'form_analytic_users_jobs.php';
+            }
+
+            if ($_GET['main_menu'] == 'my_candidancy') {
+                include 'form_my_candidancys.php';
+            }
+
+            if ($_GET['main_menu'] == 'admin_panel') {
+                include 'form_admin_panel.php';
             }
         }
         ?>
