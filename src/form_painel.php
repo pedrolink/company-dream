@@ -89,7 +89,7 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                 <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1 ps ps--active-y">
-                    <!-- Dashboard -->
+
                     <li class="menu-item active">
                         <a href="form_painel.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -97,11 +97,21 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                         </a>
                     </li>
 
-                    <!-- Layouts -->
+                    <li class="menu-item">
+                        <a href="?main_menu=my_candidancy" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-user-plus"></i>
+                            <div data-i18n="Analytics">Minhas Candidaturas</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Recursos Humanos</span>
+                    </li>
+
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Recursos Humanos</div>
+                            <div data-i18n="Layouts">Ferramentas</div>
                         </a>
 
                         <ul class="menu-sub">
@@ -109,7 +119,7 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                                 <a href="?main_menu=create_jobs" class="menu-link">
                                     <div data-i18n="Without menu">Cadastrar Vagas</div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
 
                         <ul class="menu-sub">
@@ -117,26 +127,29 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                                 <a href="?main_menu=analytic_jobs" class="menu-link">
                                     <div data-i18n="Without menu">Análise Vagas</div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
 
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Páginas</span>
+                        <span class="menu-header-text">Administrador</span>
                     </li>
+
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                            <div data-i18n="Account Settings">Configurações</div>
+                            <i class="menu-icon tf-icons bx bx-group"></i>
+                            <div data-i18n="Layouts">Gestão</div>
                         </a>
+
                         <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="?main_menu=user_profile" class="menu-link">
-                                    <div data-i18n="Account">Account</div>
+                            <li class="menu-item" id="cadastro_vaga">
+                                <a href="?main_menu=admin_panel" class="menu-link">
+                                    <div data-i18n="Without menu">Painel Administrativo</div>
                                 </a>
                             </li>
                         </ul>
-                    </li>                   
+
+                    </li>
                 </ul>
             </aside>
             <div class="layout-page">
@@ -154,8 +167,8 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                             <form method="GET" id="search_form">
                                 <div class="nav-item d-flex align-items-center">
                                     <i class="bx bx-search fs-4 lh-0"></i>
-                                    <input type="text" class="form-control border-0 shadow-none" name="search" id="search" placeholder="Procurar..."
-                                        aria-label="Procurar...">
+                                    <input type="text" class="form-control border-0 shadow-none" name="search"
+                                        id="search" placeholder="Procurar..." aria-label="Procurar...">
                                 </div>
                             </form>
                         </div>
@@ -261,27 +274,35 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
             if ($_GET['main_menu'] == 'analytic_user_jobs') {
                 include 'form_analytic_users_jobs.php';
             }
+
+            if ($_GET['main_menu'] == 'my_candidancy') {
+                include 'form_my_candidancys.php';
+            }
+
+            if ($_GET['main_menu'] == 'admin_panel') {
+                include 'form_admin_panel.php';
+            }
         }
         ?>
             </div>
         </div>
     </div>
-    
+
     <?php include("./partials/_footer_assets.php") ?>
-    <script>               
+    <script>
         function open_view(id, menu_id) {
             document.getElementById(id).className = 'menu-item active';
-            
+
         }
 
         // SEARCH INPUT
         var input = document.getElementById("search");
-        input.addEventListener("keypress", function(event) {
+        input.addEventListener("keypress", function (event) {
 
-        if (event.key === "Enter") {
-            event.preventDefault();
-            document.getElementById("search_form").submit();
-        }
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("search_form").submit();
+            }
         });
     </script>
 </body>

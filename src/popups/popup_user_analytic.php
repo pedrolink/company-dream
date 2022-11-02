@@ -12,8 +12,9 @@
                 <p>teste</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Banco de talentos</button>
-                <button type="button" class="btn btn-success">Selecionar candidato</button>
+                <a href="data_talent_bank.php?user_id=<?php echo $row_user['id'] ?>&job_id=<?php echo $job_id ?>" type="button"
+                    class="btn btn-primary">Banco de talentos</a>
+                <a href="" type="button" class="btn btn-success">Selecionar candidato</a>
             </div>
         </div>
     </div>
