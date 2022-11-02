@@ -18,7 +18,8 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
 
     <div class="container-xxl flex-grow-1 container-p-y">
         <?php include("./exceptions/message_talent_bank.php") ?>
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Recursos Humanos /</span> <?php echo $row_analytic_users_job['name'] ?></h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Recursos Humanos /</span>
+            <?php echo $row_analytic_users_job['name'] ?></h4>
 
         <div class="row">
             <div class="col-md-12">
@@ -42,8 +43,10 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                                         <?php echo $row_user['first_name'] . ' ' . $row_user['last_name'] ?></h5>
                                     <h6 class="card-subtitle text-muted"><?php echo $row_user['email'] ?></h6>
                                     <!-- IMAGEM DO USUÁRIO -->
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img class="img-fluid d-flex mx-auto my-4"
-                                            src="../assets/img/elements/4.jpg" alt="Card image cap"></a>
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img
+                                            class="img-fluid d-flex mx-auto my-4"
+                                            src="./images/user/<?php echo $row_user['user_image'] ?>"
+                                            alt="Card image cap"></a>
                                     <p class="card-text">Telefone <?php echo $row_user['phone_number'] ?></p>
                                     <a class="card-link" href="<?php echo $row_user['url_linkedin'] ?>"
                                         target="_blank"><i style="margin-top: -2px"
