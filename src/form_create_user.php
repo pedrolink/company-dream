@@ -109,8 +109,7 @@ session_start();
                             </div>
                             <div class="mb-3">
                                 <label for="user" class="form-label">Usuário</label>
-                                <input type="text" class="form-control" id="user" name="user"
-                                    placeholder="Digite seu usuário" autofocus="" required>
+                                <input type="text" name="user" id="user" placeholder="Digite seu usuário" class="form-control" required/>
                                 <div class="valid-feedback">
                                     Parece bom!
                                 </div>
@@ -120,8 +119,7 @@ session_start();
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">E-mail</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Digite seu e-mail" required>
+                                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" class="form-control" required/>
                                 <div class="valid-feedback">
                                     Parece bom!
                                 </div>
@@ -140,13 +138,16 @@ session_start();
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3 form-confirm_password-toggle">
+                            
+                            <div class="mb-3 form-password-toggle">
                                 <label class="form-label" for="confirm_password">Confirme sua senha</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="confirm_password" class="form-control"
-                                        name="confirm_password" placeholder="············"
-                                        aria-describedby="confirm_password" required>
+                                    <input type="password" id="confirm_password" class="form-control" name="confirm_password"
+                                        placeholder="············" aria-describedby="password" required>
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    <div class="invalid-feedback">
+                                        Verifique se as senhas foram preenchidas corretamente.
+                                    </div>
                                 </div>
                             </div>
 
@@ -212,6 +213,6 @@ session_start();
 </body>
 <?php     
     include("./utils/exceptions_scripts/scripts_create_user.php")
-    ?>
+?>
 
 </html>
