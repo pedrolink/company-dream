@@ -105,7 +105,7 @@
                                 <label for="descriptionUser" class="form-label">Selecione uma imagem para a vaga</label>
                                 <div class="mb-3 col-md-12">
                                     <input type="file" id="job_image" name="job_image" class="account-file-input"
-                                        accept="image/png, image/jpeg" required>
+                                        accept="image/png, image/jpeg">
                                 </div>
 
                                 <h6 class="mt-4">Habilidades da Vaga</h6>

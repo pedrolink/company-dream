@@ -26,7 +26,8 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
                                     <div class="input-group input-group-merge">
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-code-curly"></i></span>
-                                        <input type="text" class="form-control" id="job_name" name="job_name" value="<?php echo $row_edit_job['name'] ?>">
+                                        <input type="text" class="form-control" id="job_name" name="job_name"
+                                            value="<?php echo $row_edit_job['name'] ?>">
                                     </div>
                                 </div>
 
@@ -35,7 +36,8 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
                                     <div class="input-group input-group-merge">
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-user-pin"></i></span>
-                                        <input type="text" class="form-control" id="office" name="office" value="<?php echo $row_edit_job['office'] ?>">
+                                        <input type="text" class="form-control" id="office" name="office"
+                                            value="<?php echo $row_edit_job['office'] ?>">
                                     </div>
                                 </div>
 
@@ -81,7 +83,8 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
                                         <span id="icon-level-experience" class="input-group-text"><i
                                                 class="bx bx-money"></i></span>
                                         <input type="text" class="form-control" id="salary" name="salary"
-                                            placeholder="Exemplo: R$ 5.000,00" value="<?php echo number_format($row_edit_job['salary'], 2, ',', '.') ?>">
+                                            placeholder="Exemplo: R$ 5.000,00"
+                                            value="<?php echo number_format($row_edit_job['salary'], 2, ',', '.') ?>">
                                     </div>
                                 </div>
 
@@ -93,11 +96,25 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
 
                                 <label for="descriptionUser" class="form-label">Selecione uma imagem para a vaga</label>
                                 <div class="mb-3 col-md-12">
-
-                                    <input type="file" id="job_image" name="job_image" class="account-file-input"
-                                        accept="image/png, image/jpeg">
-                                    <input type="hidden" name="input_job_image"
-                                        value="<?php echo $row_edit_job['job_image'] ?>">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                            <?php if ($row_edit_job['job_image']) : ?>
+                                            <img src="../images/jobs/<?php echo $row_edit_job['job_image'] ?>"
+                                                alt="user-avatar" class="d-block rounded" id="uploadedAvatar"
+                                                width="100" height="100">
+                                            <?php else: ?>
+                                            <img src="../assets/img/illustrations/not_found_job.jpg" alt="user-avatar"
+                                                class="d-block rounded" id="uploadedAvatar" width="100" height="100">
+                                            <?php endif ?>
+                                            <div class="button-wrapper">
+                                                <input type="file" id="job_image" name="job_image"
+                                                    class="account-file-input" accept="image/png, image/jpeg">
+                                                <input type="hidden" name="input_job_image"
+                                                    value="<?php echo $row_edit_job['job_image'] ?>">
+                                                <p class="text-muted mb-0">Permitido JPG, GIF ou PNG.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <h6 class="mt-4">Habilidades da Vaga</h6>

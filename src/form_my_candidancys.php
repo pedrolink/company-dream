@@ -18,7 +18,7 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-2">
-                            <img class="card-img card-img-left" src="../assets/img/elements/12.jpg" alt="Card image">
+                            <img class="card-img card-img-left" src="./images/jobs/<?php echo $row_jobs_user['job_image'] ?>" alt="Card image">
                         </div>
                         <div class="col-md-10">
                             <div class="card-body">
@@ -28,8 +28,6 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
                                     class="btn rounded-pill btn-outline-secondary text-end">
                                     <span class="tf-icons bx bx-show"></span>&nbsp; Visualizar
                                 </a>
-                                <p class="card-text" style="margin-top: 45px"><small class="text-muted">Last updated 3
-                                        mins ago</small></p>
                             </div>
                         </div>
                     </div>
