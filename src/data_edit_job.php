@@ -61,6 +61,7 @@ $sql_update_job = 'UPDATE rh_jobs SET name = "' . $job_name . '", office = "' . 
         '", local = "Remoto", job_image = "' . $new_name_image . '" WHERE id = "' . $job_id . '"';                               
 
 if($conection->query($sql_update_job) === TRUE){
+    move_uploaded_file($file_temp, $location . $new_name_image);
     $_SESSION['update_job_success'] = true;
 } else {
     $_SESSION['update_job_error'] = true;
