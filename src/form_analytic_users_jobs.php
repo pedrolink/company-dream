@@ -47,7 +47,7 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                                             class="img-fluid d-flex mx-auto my-4"
                                             src="./images/user/<?php echo $row_user['user_image'] ?>"
                                             alt="Card image cap"></a>
-                                    <p class="card-text">Telefone <?php echo $row_user['phone_number'] ?></p>
+                                    <!-- <p class="card-text">Telefone <?php echo $row_user['phone_number'] ?></p> -->
                                     <a class="card-link" href="<?php echo $row_user['url_linkedin'] ?>"
                                         target="_blank"><i style="margin-top: -2px"
                                             class="bx bxl-linkedin-square me-1"></i> LinkedIn</a>

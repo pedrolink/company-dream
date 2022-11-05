@@ -18,7 +18,7 @@
                     <h5 class="card-header">Informações da Vaga</h5>
                     <hr class="my-0">
                     <div class="card-body">
-                        <form action="data_create_job.php" method="POST">
+                        <form action="data_create_job.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
@@ -102,8 +102,21 @@
                                         rows="3"></textarea>
                                 </div>
 
+                                <label for="descriptionUser" class="form-label">Selecione uma imagem para a vaga</label>
+                                <div class="mb-3 col-md-12">
+                                    <input type="file" id="job_image" name="job_image" class="account-file-input"
+                                        accept="image/png, image/jpeg" required>
+                                </div>
+
                                 <h6 class="mt-4">Habilidades da Vaga</h6>
                                 <hr class="my-0">
+
+                                <?php include('./utils/input_jobs_skills.php') ?>
+
+                                <div class="mb-3 col-md-6">
+                                    <button id="add_form_field" class="btn btn-info col-md-12">Adicionar
+                                        uma habilidade</button>
+                                </div>
 
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>

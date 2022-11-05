@@ -17,7 +17,7 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
             <div class="col-md-12">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form action="data_edit_job.php" method="POST">
+                        <form action="data_edit_job.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" value="<?php echo $_GET['id'] ?>" name="job_id">
                             <div class="row">
 
@@ -91,8 +91,24 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
                                         rows="3"><?php echo $row_edit_job['description'] ?></textarea>
                                 </div>
 
+                                <label for="descriptionUser" class="form-label">Selecione uma imagem para a vaga</label>
+                                <div class="mb-3 col-md-12">
+
+                                    <input type="file" id="job_image" name="job_image" class="account-file-input"
+                                        accept="image/png, image/jpeg">
+                                    <input type="hidden" name="input_job_image"
+                                        value="<?php echo $row_edit_job['job_image'] ?>">
+                                </div>
+
                                 <h6 class="mt-4">Habilidades da Vaga</h6>
                                 <hr class="my-0">
+
+                                <?php include('./utils/input_jobs_skills.php') ?>
+
+                                <div class="mb-3 col-md-6">
+                                    <button id="add_form_field" class="btn btn-info col-md-12">Adicionar
+                                        uma habilidade</button>
+                                </div>
 
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>

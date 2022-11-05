@@ -9,7 +9,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>teste</p>
+                <p>Telefone: <?php echo $row_user['phone_number'] ?> </p>
+                <p>Data de Nascimento: <?php echo date('d/m/Y', strtotime(trim($row_user['birth_date']))); ?></p>
+                <p>Habilidades: </p>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
             </div>
             <div class="modal-footer">
                 <a href="data_talent_bank.php?user_id=<?php echo $row_user['id'] ?>&job_id=<?php echo $job_id ?>" type="button"

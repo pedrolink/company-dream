@@ -101,27 +101,25 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                         <td><span class="badge bg-label-danger me-1">Desativa</span></td>
                                         <?php endif; ?>
 
+                                        <?php 
+                                        $sql_users_in_job = 'SELECT * FROM candidates_vacancy 
+                                        INNER JOIN users ON candidates_vacancy.id_user = users.id
+                                        WHERE id_job = ' . $row_jobs['id'] . '
+                                        ORDER BY candidates_vacancy.points
+                                        LIMIT 3';
+                                        $result_users_in_job = mysqli_query($conection, $sql_users_in_job);
+                                        ?>
                                         <td>
                                             <ul
                                                 class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                                <?php while($row_users_in_job = mysqli_fetch_array($result_users_in_job)): ?>
                                                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
                                                     data-bs-placement="top" class="avatar avatar-xs pull-up" title=""
-                                                    data-bs-original-title="Lilian Fuller">
-                                                    <img src="../assets/img/avatars/5.png" alt="Avatar"
-                                                        class="rounded-circle">
+                                                    data-bs-original-title="<?php echo $row_users_in_job['first_name'] . ' ' . $row_users_in_job['last_name'] ?>">
+                                                    <img src="./images/user/<?php echo $row_users_in_job['user_image'] ?>"
+                                                        alt="Avatar" class="rounded-circle">
                                                 </li>
-                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                    data-bs-placement="top" class="avatar avatar-xs pull-up" title=""
-                                                    data-bs-original-title="Sophia Wilkerson">
-                                                    <img src="../assets/img/avatars/6.png" alt="Avatar"
-                                                        class="rounded-circle">
-                                                </li>
-                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                    data-bs-placement="top" class="avatar avatar-xs pull-up" title=""
-                                                    data-bs-original-title="Christina Parker">
-                                                    <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                        class="rounded-circle">
-                                                </li>
+                                                <?php endwhile; ?>
                                             </ul>
                                         </td>
                                         <td>

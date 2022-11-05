@@ -74,18 +74,12 @@
                                 <h6 class="mt-4">Informe suas habilidades</h6>
                                 <hr class="my-0">
 
-                                <?php //include("./utils/initial_skills.php") ?>
+                                <?php include("./utils/input_users_skills.php") ?>
 
-                                <!-- <div class="col-md-12">
-                                    <div class="row" id="container1">
-
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="mb-3 col-md-6">
-                                    <button id="add_form_field" class="btn btn-dark col-md-12">Adicionar
+                                <div class="mb-3 col-md-6">
+                                    <button id="add_form_field" class="btn btn-info col-md-12">Adicionar
                                         uma habilidade</button>
-                                </div> -->
+                                </div>
 
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
