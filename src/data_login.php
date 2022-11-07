@@ -14,11 +14,10 @@ $password = mysqli_real_escape_string($conection, $_POST['password']);
 $query = "SELECT * FROM users WHERE user = '{$user}' AND password = md5('{$password}')";
 
 $result = mysqli_query($conection, $query);
-
+$user_db = mysqli_fetch_array($result);
 $row = mysqli_num_rows($result);
 
-if($row == 1) {
-	$user_db = mysqli_fetch_array($result);
+if($row == 1 and $user_db['status'] == 1) {	
 	$_SESSION['name'] = $user_db['name'];
 	$_SESSION['user'] = $user_db['user'];
 	$_SESSION['email'] = $user_db['email'];
@@ -32,5 +31,4 @@ if($row == 1) {
 	header('Location: index.php');
 	exit();
 }
-
 ?>
