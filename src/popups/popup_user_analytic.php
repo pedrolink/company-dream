@@ -11,19 +11,16 @@
             <div class="modal-body">
                 <p>Telefone: <?php echo $row_user['phone_number'] ?> </p>
                 <p>Data de Nascimento: <?php echo date('d/m/Y', strtotime(trim($row_user['birth_date']))); ?></p>
-                <p>Habilidades: </p>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
-                <span class="badge bg-label-primary" style="margin-top: 5px">Primary</span>
+                <p>Habilidades do usuário: </p>
+                <?php
+                $sql_skills_user = 'SELECT * FROM user_skills 
+                INNER JOIN skills ON user_skills.skill_id = skills.id
+                WHERE user_id = ' . $row_user['id'];
+                $result_skills_user = mysqli_query($conection, $sql_skills_user);
+                ?>
+                <?php while($row_skills_user = mysqli_fetch_array($result_skills_user)): ?>
+                    <span class="badge bg-label-primary"><?php echo $row_skills_user['name'] ?></span>
+                <?php endwhile; ?>
             </div>
             <div class="modal-footer">
                 <a href="data_talent_bank.php?user_id=<?php echo $row_user['id'] ?>&job_id=<?php echo $job_id ?>" type="button"
