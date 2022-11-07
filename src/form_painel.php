@@ -126,8 +126,15 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                             <form method="GET" id="search_form">
                                 <div class="nav-item d-flex align-items-center">
                                     <i class="bx bx-search fs-4 lh-0"></i>
+                                    <?php
+                                    if (empty($_GET['main_menu']) or $_GET['main_menu'] == 'jobs'):
+                                    ?>
                                     <input type="text" class="form-control border-0 shadow-none" name="search"
-                                        id="search" placeholder="Procurar..." aria-label="Procurar...">
+                                        id="search" placeholder="Procurar..." aria-label="Procurar..." style="width: 1250px;">
+                                    <?php else: ?>
+                                    <input type="text" class="form-control border-0 shadow-none" name="search"
+                                        id="search" placeholder="Desabilitado para procura nesta guia..." aria-label="Procurar..." style="width: 1250px; background-color: #fff" disabled>
+                                    <?php endif; ?>
                                 </div>
                             </form>
                         </div>
@@ -154,13 +161,15 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="./images/user/<?php echo $row_user['user_image'] ?>" alt=""
-                                                            class="w-px-40 h-auto rounded-circle">
+                                                        <img src="./images/user/<?php echo $row_user['user_image'] ?>"
+                                                            alt="" class="w-px-40 h-auto rounded-circle">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block"><?php echo $row_user['first_name'] ?></span>
-                                                    <small class="text-muted"><?php echo $row_user['name_permission'] ?></small>
+                                                    <span
+                                                        class="fw-semibold d-block"><?php echo $row_user['first_name'] ?></span>
+                                                    <small
+                                                        class="text-muted"><?php echo $row_user['name_permission'] ?></small>
                                                 </div>
                                             </div>
                                         </a>
