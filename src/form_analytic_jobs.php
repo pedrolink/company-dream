@@ -115,9 +115,14 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                                 <?php while($row_users_in_job = mysqli_fetch_array($result_users_in_job)): ?>
                                                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
                                                     data-bs-placement="top" class="avatar avatar-xs pull-up" title=""
-                                                    data-bs-original-title="<?php echo $row_users_in_job['first_name'] . ' ' . $row_users_in_job['last_name'] ?>">
-                                                    <img src="./images/user/<?php echo $row_users_in_job['user_image'] ?>"
+                                                    data-bs-original-title="<?php echo $row_users_in_job['first_name'] . ' ' . $row_users_in_job['last_name'] ?>">                                                    
+                                                    <?php if ($row_users_in_job['user_image']) : ?>
+                                                        <img src="./images/user/<?php echo $row_users_in_job['user_image'] ?>"
                                                         alt="Avatar" class="rounded-circle">
+                                                    <?php else: ?>
+                                                        <img src="../assets/img/avatars/default-avatar-1.png"
+                                                        alt="Avatar" class="rounded-circle">
+                                                    <?php endif ?>
                                                 </li>
                                                 <?php endwhile; ?>
                                             </ul>

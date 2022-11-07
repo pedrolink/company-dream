@@ -42,11 +42,20 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                                     <h5 class="card-title">
                                         <?php echo $row_user['first_name'] . ' ' . $row_user['last_name'] ?></h5>
                                     <h6 class="card-subtitle text-muted"><?php echo $row_user['email'] ?></h6>
-                                    <!-- IMAGEM DO USUÁRIO -->
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img
-                                            class="img-fluid d-flex mx-auto my-4"
-                                            src="./images/user/<?php echo $row_user['user_image'] ?>"
-                                            alt="Card image cap"></a>
+
+                                    <?php if ($row_user['user_image']) : ?>
+                                        <!-- IMAGEM DO USUÁRIO -->
+                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img
+                                                class="img-fluid d-flex mx-auto my-4"
+                                                src="./images/user/<?php echo $row_user['user_image'] ?>"
+                                                alt="Card image cap"></a>
+                                    <?php else: ?>
+                                        <!-- IMAGEM DO USUÁRIO -->
+                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img
+                                                class="img-fluid d-flex mx-auto my-4"
+                                                src="../assets/img/avatars/default-avatar-1.png" alt="Card image cap"></a>
+                                    <?php endif ?>
+                                    
                                     <!-- <p class="card-text">Telefone <?php echo $row_user['phone_number'] ?></p> -->
                                     <a class="card-link" href="<?php echo $row_user['url_linkedin'] ?>"
                                         target="_blank"><i style="margin-top: -2px"

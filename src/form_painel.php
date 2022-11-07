@@ -130,10 +130,12 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                                     if (empty($_GET['main_menu']) or $_GET['main_menu'] == 'jobs'):
                                     ?>
                                     <input type="text" class="form-control border-0 shadow-none" name="search"
-                                        id="search" placeholder="Procurar..." aria-label="Procurar..." style="width: 1250px;">
+                                        id="search" placeholder="Procurar..." aria-label="Procurar..."
+                                        style="width: 1250px;">
                                     <?php else: ?>
                                     <input type="text" class="form-control border-0 shadow-none" name="search"
-                                        id="search" placeholder="Desabilitado para procura nesta guia..." aria-label="Procurar..." style="width: 1250px; background-color: #fff" disabled>
+                                        id="search" placeholder="Desabilitado para procura nesta guia..."
+                                        aria-label="Procurar..." style="width: 1250px; background-color: #fff" disabled>
                                     <?php endif; ?>
                                 </div>
                             </form>
@@ -151,8 +153,14 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
+                                        <?php if ($row_user['user_image']) : ?>
                                         <img src="./images/user/<?php echo $row_user['user_image'] ?>" alt=""
                                             class="w-px-40 h-auto rounded-circle">
+                                        <?php else: ?>
+                                        <img src="../assets/img/avatars/default-avatar-1.png" alt=""
+                                            class="w-px-40 h-auto rounded-circle">
+                                        <?php endif ?>
+
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -161,8 +169,13 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
+                                                        <?php if ($row_user['user_image']) : ?>
                                                         <img src="./images/user/<?php echo $row_user['user_image'] ?>"
                                                             alt="" class="w-px-40 h-auto rounded-circle">
+                                                        <?php else: ?>
+                                                        <img src="../assets/img/avatars/default-avatar-1.png" alt=""
+                                                            class="w-px-40 h-auto rounded-circle">
+                                                        <?php endif ?>
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
