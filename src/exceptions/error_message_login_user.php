@@ -43,7 +43,7 @@ unset($_SESSION['status_delete_user_success']);
 if(isset($_SESSION['user_authenticate'])):
 ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Usuário logado com sucesso!</strong> Aproveite nosso sistema!
+        <strong>Usuário logado com sucesso!</strong> Agora você pode navegar pelo nosso sistema 🚀
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <?php 

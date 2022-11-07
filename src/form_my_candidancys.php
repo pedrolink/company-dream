@@ -11,14 +11,20 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">Minhas Candidaturas</h4>
+        <h4 class="fw-bold py-3 mb-4">Minhas Candidaturas</h4>
         <?php while($row_jobs_user = mysqli_fetch_array($result_jobs_user)): ?>
         <div class="row mb-5">
             <div class="col-md">
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-2">
-                            <img class="card-img card-img-left" src="./images/jobs/<?php echo $row_jobs_user['job_image'] ?>" alt="Card image">
+                            <?php if($row_jobs_user['job_image']): ?>
+                            <img class="card-img card-img-left"
+                                src="./images/jobs/<?php echo $row_jobs_user['job_image'] ?>" alt="Card image">
+                            <?php else: ?>
+                            <img class="card-img card-img-left" src="./assets/img/illustrations/not_found_job.jpg"
+                                alt="Card image">
+                            <?php endif; ?>
                         </div>
                         <div class="col-md-10">
                             <div class="card-body">

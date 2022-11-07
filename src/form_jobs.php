@@ -14,7 +14,7 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <?php include("./exceptions/error_message_login_user.php") ?>
-        <div class="row mb-5"> <!-- VERIFICAR ISSO AQUI NA HORA DE MOSTRAR NA TELA INICIAL -->
+        <div class="row mb-5">
             <?php
             $cont_job = 0;
             while($row_jobs = mysqli_fetch_array($result_jobs)):    
