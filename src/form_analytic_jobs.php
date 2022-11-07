@@ -1,13 +1,32 @@
 <?php
 $condition = '';
-if (isset($_GET['search'])){
-    $condition .= ' WHERE name LIKE "%' . $_GET['search'] . '%"';
+
+if (isset($_GET['job_status'])){
+    $condition .= ' WHERE active = "' . $_GET['job_status'] . '"';
 }
+
+if ($_GET['job_name']){
+    $condition .= ' AND name LIKE "%' . $_GET['job_name'] . '%"';
+}
+
+if ($_GET['job_carrer']){
+    $condition .= ' AND office LIKE "%' . $_GET['job_carrer'] . '%"';
+}
+
+if ($_GET['job_salary']){
+    $condition .= ' AND salary >= "' . $_GET['job_salary'] . '"';
+}
+
+if ($_GET['experience_level']){
+    $condition .= ' AND experience_level = "' . $_GET['experience_level'] . '"';
+}
+
 $sql_jobs = 'SELECT * FROM rh_jobs
 INNER JOIN english_levels ON rh_jobs.english_level = english_levels.id_english 
 INNER JOIN carrers_focus ON rh_jobs.carrer_focus = carrers_focus.id_carrer
 INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience' . $condition;
 $result_jobs = mysqli_query($conection, $sql_jobs);
+
 ?>
 
 <!-- <input type="hidden" name="main_menu" value="analytic_jobs"> -->
@@ -34,7 +53,7 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                     <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                             <div class="col-md-6 col-xl-12 mb-5">
-                                <div class="card accordion-item">
+                                <div class="card accordion-item" style="box-shadow: 0 0.125rem 0.25rem #9d9d9d">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button type="button" class="accordion-button collapsed"
                                             data-bs-toggle="collapse" data-bs-target="#accordionThree"
@@ -45,25 +64,84 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                     <div id="accordionThree" class="accordion-collapse collapse"
                                         aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body mt-2" style="height: 180px">
-                                            <div class="col-md-6 col-xl-4 mb-5">
-                                                <form action="data_create_job.php" method="GET">
-                                                    <div class="row">
+                                            <div class="col-md-6 col-xl-12 mb-5">
+                                                <form method="GET">
+                                                    <input type="hidden" name="main_menu" value="analytic_jobs">
+                                                    <div class="row mb-5">
 
-                                                        <div class="mb-3 col-md-6">
+                                                        <div class="mb-3 col-md-3">
                                                             <label class="form-label" for="job_name">Nome da
                                                                 Vaga</label>
+                                                            <div class="input-group input-group-merge">
+                                                                <span id="icon-job-name" class="input-group-text"><i
+                                                                        class="bx bx-code-curly"></i></span>
+                                                                <input type="text" class="form-control" id="job_name"
+                                                                    name="job_name" placeholder="Digite um nome..."
+                                                                    value="<?php echo $_GET['job_name'] ?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-3 col-md-3">
+                                                            <label class="form-label" for="job_carrer">Cargo</label>
+                                                            <div class="input-group input-group-merge">
+                                                                <span id="icon-level-experience"
+                                                                    class="input-group-text"><i
+                                                                        class="bx bx-user-pin"></i></span>
+                                                                <input type="text" class="form-control" id="job_carrer"
+                                                                    name="job_carrer" placeholder="Digite um cargo..."
+                                                                    value="<?php echo $_GET['job_carrer'] ?>">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-3 col-md-2">
+                                                            <label class="form-label" for="job_salary">Salário</label>
                                                             <div class="input-group input-group-merge">
                                                                 <span id="icon-level-experience"
                                                                     class="input-group-text"><i
                                                                         class="bx bx-money"></i></span>
-                                                                <input type="text" class="form-control" id="job_name"
-                                                                    name="job_name">
+                                                                <input type="text" class="form-control" id="job_salary"
+                                                                    name="job_salary" placeholder="Digite um salário..."
+                                                                    value="<?php echo $_GET['job_salary'] ?>">
                                                             </div>
                                                         </div>
+
+                                                        <div class="mb-3 col-md-2">
+                                                            <label class="form-label"
+                                                                for="job_experience">Experiência</label>
+                                                            <div class="input-group input-group-merge">
+                                                                <span id="icon-level-experience"
+                                                                    class="input-group-text"><i
+                                                                        class="bx bx-line-chart"></i></span>
+                                                                <select id="experience_level" name="experience_level"
+                                                                    class="select2 form-select"
+                                                                    aria-describedby="icon-level-experience">
+                                                                    <option value="">Selecione</option>
+                                                                    <option value="1">Júnior</option>
+                                                                    <option value="2">Pleno</option>
+                                                                    <option value="3">Sênior</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-3 col-md-2">
+                                                            <label class="form-label" for="job_status">Status</label>
+                                                            <div class="input-group input-group-merge">
+                                                                <span id="icon-level-experience"
+                                                                    class="input-group-text"><i
+                                                                        class='bx bx-stats'></i></span>
+                                                                <select name="job_status" class="select2 form-select"
+                                                                    aria-describedby="icon-level-experience">
+                                                                    <option value="1">Ativa</option>
+                                                                    <option value="0">Desativa</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="mt-4">
                                                             <button type="submit"
                                                                 class="btn btn-primary me-2">Pesquisar</button>
                                                         </div>
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -86,6 +164,7 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
+                                    <?php if ($result_jobs->num_rows > 0): ?>
                                     <?php while($row_jobs = mysqli_fetch_array($result_jobs)): ?>
                                     <tr>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
@@ -95,7 +174,7 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                         </td>
                                         <td><?php echo $row_jobs['name_experience'] ?></td>
 
-                                        <?php if ($row_jobs['active'] == 0): ?>
+                                        <?php if ($row_jobs['active'] == 1): ?>
                                         <td><span class="badge bg-label-success me-1">Ativa</span></td>
                                         <?php else: ?>
                                         <td><span class="badge bg-label-danger me-1">Desativa</span></td>
@@ -115,13 +194,13 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                                 <?php while($row_users_in_job = mysqli_fetch_array($result_users_in_job)): ?>
                                                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
                                                     data-bs-placement="top" class="avatar avatar-xs pull-up" title=""
-                                                    data-bs-original-title="<?php echo $row_users_in_job['first_name'] . ' ' . $row_users_in_job['last_name'] ?>">                                                    
+                                                    data-bs-original-title="<?php echo $row_users_in_job['first_name'] . ' ' . $row_users_in_job['last_name'] ?>">
                                                     <?php if ($row_users_in_job['user_image']) : ?>
-                                                        <img src="./images/user/<?php echo $row_users_in_job['user_image'] ?>"
+                                                    <img src="./images/user/<?php echo $row_users_in_job['user_image'] ?>"
                                                         alt="Avatar" class="rounded-circle">
                                                     <?php else: ?>
-                                                        <img src="../assets/img/avatars/default-avatar-1.png"
-                                                        alt="Avatar" class="rounded-circle">
+                                                    <img src="../assets/img/avatars/default-avatar-1.png" alt="Avatar"
+                                                        class="rounded-circle">
                                                     <?php endif ?>
                                                 </li>
                                                 <?php endwhile; ?>
@@ -147,6 +226,13 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                         </td>
                                     </tr>
                                     <?php endwhile; ?>
+                                    <?php else: ?>
+                                    <tr>
+                                        <td>
+                                            Nenhum registro encontrado...
+                                        </td>
+                                    </tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
