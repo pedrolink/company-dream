@@ -243,3 +243,13 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
     </div>
     <?php include("./partials/_footer_user_profile.php") ?>
 </div>
+
+<script>
+    document.getElementById('menu-home').className = 'menu-item';
+    document.getElementById('menu-tools').className = 'menu-item active open';
+    document.getElementById('menu-create-job').className = 'menu-item';
+    document.getElementById('menu-analytic-jobs').className = 'menu-item active';
+    document.getElementById('menu-admin-panel').className = 'menu-item';
+    document.getElementById('menu-my-candidancy').className = 'menu-item';
+    document.getElementById('menu-gest').className = 'menu-item';
+</script>

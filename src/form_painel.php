@@ -8,7 +8,7 @@ $sql_user = 'SELECT * FROM users
 $result_user = mysqli_query($conection, $sql_user);
 $row_user = mysqli_fetch_array($result_user);
 
-$sql_user_address = 'SELECT * FROM user_address WHERE user_id = "' . $row_user['id'] . '"';
+$sql_user_address = 'SELECT * FROM user_address WHERE user_id = "' . $_SESSION['user_id'] . '"';
 $result_user_address = mysqli_query($conection, $sql_user_address);
 $row_user_address = mysqli_fetch_array($result_user_address);
 
@@ -16,7 +16,7 @@ $sql_user_experience = 'SELECT * FROM user_experience
                         INNER JOIN english_levels ON user_experience.english_level = english_levels.id_english 
                         INNER JOIN carrers_focus ON user_experience.carrer_focus = carrers_focus.id_carrer
                         INNER JOIN experience_levels ON user_experience.experience_level = experience_levels.id_experience
-                        WHERE user_id = "' . $row_user['id'] . '"';                     
+                        WHERE user_id = "' . $_SESSION['user_id'] . '"';                     
 $result_user_experience = mysqli_query($conection, $sql_user_experience);
 $row_user_experience = mysqli_fetch_array($result_user_experience);
 
@@ -49,32 +49,34 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
 
                 <ul class="menu-inner py-1 ps ps--active-y">
 
-                    <li class="menu-item active">
+                    <li class="menu-item active" id="menu-home">
                         <a href="form_painel.php" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Home</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="menu-my-candidancy">
                         <a href="?main_menu=my_candidancy" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-user-plus"></i>
                             <div data-i18n="Analytics">Minhas Candidaturas</div>
                         </a>
                     </li>
 
+                    <?php if($_SESSION['user_permission'] == 2 or $_SESSION['user_permission'] == 1): ?>
+
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Recursos Humanos</span>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="menu-tools">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div data-i18n="Layouts">Ferramentas</div>
                         </a>
 
                         <ul class="menu-sub">
-                            <li class="menu-item" id="cadastro_vaga">
+                            <li class="menu-item" id="menu-create-job">
                                 <a href="?main_menu=create_jobs" class="menu-link">
                                     <div data-i18n="Without menu">Cadastrar Vagas</div>
                                 </a>
@@ -82,7 +84,7 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                         </ul>
 
                         <ul class="menu-sub">
-                            <li class="menu-item" id="cadastro_vaga">
+                            <li class="menu-item" id="menu-analytic-jobs">
                                 <a href="?main_menu=analytic_jobs" class="menu-link">
                                     <div data-i18n="Without menu">Análise Vagas</div>
                                 </a>
@@ -90,25 +92,30 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                         </ul>
                     </li>
 
+                    <?php endif; ?>
+
+                    <?php if($_SESSION['user_permission'] == 1): ?>
+
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">Administrador</span>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="menu-gest">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-group"></i>
                             <div data-i18n="Layouts">Gestão</div>
                         </a>
 
                         <ul class="menu-sub">
-                            <li class="menu-item" id="cadastro_vaga">
+                            <li class="menu-item" id="menu-admin-panel">
                                 <a href="?main_menu=admin_panel" class="menu-link">
                                     <div data-i18n="Without menu">Painel Administrativo</div>
                                 </a>
                             </li>
                         </ul>
-
                     </li>
+
+                    <?php endif; ?>
                 </ul>
             </aside>
             <div class="layout-page">
@@ -227,7 +234,9 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
             }
 
             if ($_GET['main_menu'] == 'create_jobs') {
-                include './form_create_jobs.php';
+                if($_SESSION['user_permission'] == 2 or $_SESSION['user_permission'] == 1){
+                    include './form_create_jobs.php';
+                }
             }
 
             if ($_GET['main_menu'] == 'view_job') {
@@ -235,19 +244,27 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
             }
 
             if ($_GET['main_menu'] == 'analytic_jobs') {
-                include 'form_analytic_jobs.php';
+                if($_SESSION['user_permission'] == 2 or $_SESSION['user_permission'] == 1){
+                    include 'form_analytic_jobs.php';
+                }
             }
 
             if ($_GET['main_menu'] == 'edit_job') {
-                include 'form_edit_job.php';
+                if($_SESSION['user_permission'] == 2 or $_SESSION['user_permission'] == 1){
+                    include 'form_edit_job.php';
+                }
             }
 
             if ($_GET['main_menu'] == 'talent_jobs') {
-                include 'form_talent_jobs.php';
+                if($_SESSION['user_permission'] == 2 or $_SESSION['user_permission'] == 1){
+                    include 'form_talent_jobs.php';
+                }
             }
 
             if ($_GET['main_menu'] == 'analytic_user_jobs') {
-                include 'form_analytic_users_jobs.php';
+                if($_SESSION['user_permission'] == 2 or $_SESSION['user_permission'] == 1){
+                    include 'form_analytic_users_jobs.php';
+                }
             }
 
             if ($_GET['main_menu'] == 'my_candidancy') {
@@ -255,7 +272,9 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
             }
 
             if ($_GET['main_menu'] == 'admin_panel') {
-                include 'form_admin_panel.php';
+                if($_SESSION['user_permission'] == 1){
+                    include 'form_admin_panel.php';
+                }
             }
         }
         ?>
@@ -265,11 +284,6 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
 
     <?php include("./partials/_footer_assets.php") ?>
     <script>
-        function open_view(id, menu_id) {
-            document.getElementById(id).className = 'menu-item active';
-
-        }
-
         // SEARCH INPUT
         var input = document.getElementById("search");
         input.addEventListener("keypress", function (event) {

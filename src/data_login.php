@@ -22,6 +22,7 @@ if($row == 1 and $user_db['status'] == 1) {
 	$_SESSION['user'] = $user_db['user'];
 	$_SESSION['email'] = $user_db['email'];
 	$_SESSION['user_id'] = $user_db['id'];
+	$_SESSION['user_permission'] = $user_db['type_permission'];
 	//TODO: Lembrar de fazer autenticação do usuário quando logar
 	$_SESSION['user_authenticate'] = true;
 	header('Location: form_painel.php');

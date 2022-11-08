@@ -22,8 +22,10 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
             <?php echo $row_analytic_users_job['name'] ?></h4>
 
         <div class="row">
-            <div class="col-md-12">
-                <?php while($row_candidates = mysqli_fetch_array($result_candidates)): ?>
+            <div class="col-md-12">                
+                <div class="card-body">
+                    <div class="row mb-5">
+                    <?php while($row_candidates = mysqli_fetch_array($result_candidates)): ?>
                 <?php
                     $sql_user = 'SELECT * FROM users
                                  INNER JOIN user_experience ON users.id = user_experience.user_id
@@ -34,8 +36,6 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                     $result_user = mysqli_query($conection, $sql_user);
                     $row_user = mysqli_fetch_array($result_user);
                 ?>
-                <div class="card-body">
-                    <div class="row mb-5">
                         <div class="col-md-6 col-lg-4 mb-3">
                             <div class="card h-100">
                                 <div class="card-body">
@@ -64,10 +64,11 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                                 </div>
                             </div>
                         </div>
+                        <?php include('./popups/popup_user_analytic.php') ?>
+                <?php endwhile ?>
                     </div>
                 </div>
-                <?php include('./popups/popup_user_analytic.php') ?>
-                <?php endwhile ?>
+                
             </div>
         </div>
     </div>

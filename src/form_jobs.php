@@ -12,12 +12,16 @@ INNER JOIN carrers_focus ON rh_jobs.carrer_focus = carrers_focus.id_carrer
 INNER JOIN experience_levels ON rh_jobs.experience_level = experience_levels.id_experience
 WHERE active = 1' . $condition;
 $result_jobs = mysqli_query($conection, $sql_jobs);
+
+$sql_user_experience_exist = 'SELECT * FROM user_experience WHERE user_id = ' . $_SESSION['user_id'];
+$result_user_experience_exist = mysqli_query($conection, $sql_user_experience_exist);
 ?>
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <?php include("./exceptions/error_message_login_user.php") ?>
         <div class="row mb-5">
+            <?php if ($result_user_experience_exist->num_rows > 0): ?>
             <?php
             $cont_job = 0;
             while($row_jobs = mysqli_fetch_array($result_jobs)):    
@@ -77,6 +81,9 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
             </div>
             <?php endif ?>
             <?php endwhile; ?>
+            <?php else: ?>
+            <?php include('./utils/not_found_user_experience.php') ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>

@@ -136,3 +136,13 @@
 
     <div class="content-backdrop fade"></div>
 </div>
+
+<script>
+    document.getElementById('menu-home').className = 'menu-item';
+    document.getElementById('menu-tools').className = 'menu-item active open';
+    document.getElementById('menu-create-job').className = 'menu-item active';
+    document.getElementById('menu-analytic-jobs').className = 'menu-item';
+    document.getElementById('menu-admin-panel').className = 'menu-item';
+    document.getElementById('menu-my-candidancy').className = 'menu-item';
+    document.getElementById('menu-gest').className = 'menu-item';
+</script>

@@ -12,6 +12,7 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4">Minhas Candidaturas</h4>
+        <?php if ($result_jobs_user->num_rows > 0): ?>
         <?php while($row_jobs_user = mysqli_fetch_array($result_jobs_user)): ?>
         <div class="row mb-5">
             <div class="col-md">
@@ -41,5 +42,18 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
             </div>
         </div>
         <?php endwhile; ?>
+        <? else: ?>
+        <?php include('./utils/not_found_message.php'); ?>
+        <? endif; ?>
     </div>
 </div>
+
+<script>
+    document.getElementById('menu-my-candidancy').className = 'menu-item active';
+    document.getElementById('menu-home').className = 'menu-item';
+    document.getElementById('menu-tools').className = 'menu-item';
+    document.getElementById('menu-create-job').className = 'menu-item';
+    document.getElementById('menu-analytic-jobs').className = 'menu-item';
+    document.getElementById('menu-admin-panel').className = 'menu-item';    
+    document.getElementById('menu-gest').className = 'menu-item';
+</script>
