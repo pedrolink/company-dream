@@ -31,30 +31,6 @@ if ($file_size <= 0){
     }
 }
 
-$cont_skill_job = 1;
-
-$sql_delete_skills_job = 'DELETE FROM rh_jobs_skills WHERE id_job = "'. $job_id . '"';
-$conection->query($sql_delete_skills_job);
-
-while(true){
-    $skill = $_POST['skill' . strval($cont_skill_job)];
-    $default_radio_skill = $_POST['default-radio-' . strval($cont_skill_job)];
-    
-    if(!$skill and !$default_radio_skill){
-        break;
-    }
-
-    $sql_insert_skills_job = "INSERT INTO rh_jobs_skills (id_job, skill_id, skill_level) 
-                               VALUES ('$job_id', '$skill', '$default_radio_skill')";
-    
-    if($conection->query($sql_insert_skills_job) === TRUE){
-        $_SESSION['update_job_success'] = true;
-    } else {
-        $_SESSION['update_job_error'] = true;
-    }                           
-    $cont_skill_job = $cont_skill_job + 1;
-}
-
 $sql_update_job = 'UPDATE rh_jobs SET name = "' . $job_name . '", office = "' . $office .
         '", description = "' . $job_description . '", salary = "' . $salary . '", english_level = "' . $english_level .
         '", experience_level = "' . $experience_level . '", carrer_focus = "' . $carrer_focus . 

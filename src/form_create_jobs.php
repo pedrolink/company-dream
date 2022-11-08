@@ -113,11 +113,6 @@
 
                                 <?php include('./utils/input_jobs_skills.php') ?>
 
-                                <div class="mb-3 col-md-6">
-                                    <button id="add_form_field" class="btn btn-info col-md-12">Adicionar
-                                        uma habilidade</button>
-                                </div>
-
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
                                     <button type="reset" class="btn btn-outline-secondary">Cancelar</button>

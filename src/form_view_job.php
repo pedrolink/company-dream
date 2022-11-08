@@ -46,7 +46,12 @@ $row_job = mysqli_fetch_array($result_job);
                                     <i class="bx bx-money"></i>
                                     <?php echo 'R$ ' . number_format($row_job['salary'], 2, ',', '.') ?>
                                 </p>
+                                <p class="card-text">
+                                    <i class='bx bx-map' ></i>
+                                    <?php echo $row_job['local'] ?>
+                                </p>
                             </div>
+
                             <div class="col-md-6 col-xl-6" style="margin-left: 10px">
                                 <h5 class="card-title">Descrição da vaga</h5>
                                 <p class="card-text"><?php echo $row_job['description'] ?></p>

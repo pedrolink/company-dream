@@ -117,26 +117,41 @@ $row_edit_job = mysqli_fetch_array($result_edit_job);
                                     </div>
                                 </div>
 
-                                <h6 class="mt-4">Habilidades da Vaga</h6>
-                                <hr class="my-0">
-
-                                <?php include('./utils/input_jobs_skills.php') ?>
-
-                                <div class="mb-3 col-md-6">
-                                    <button id="add_form_field" class="btn btn-info col-md-12">Adicionar
-                                        uma habilidade</button>
-                                </div>
-
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
                                     <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
                                 </div>
-                            </div>
+                        </form>
+
+                        <h6 class="mt-4">Habilidades</h6>
+                        <hr class="my-0">
+
+                        <div class="mb-3 col-md-12" style="margin-top: 15px">
+                            <?php
+                                    $sql_job_skills = 'SELECT * FROM rh_jobs_skills 
+                                    INNER JOIN skills ON rh_jobs_skills.skill_id = skills.id
+                                    WHERE id_job = ' . $_GET['id'];
+                                    $result_job_skills = mysqli_query($conection, $sql_job_skills);
+                                    ?>
+                            <?php while($row_job_skills = mysqli_fetch_array($result_job_skills)): ?>
+                            <a
+                                href="data_delete_skill_job.php?id_skill=<?php echo $row_job_skills['id'] ?>&id_job=<?php echo $_GET['id'] ?>"><span
+                                    class="badge bg-label-primary" style="margin-left: 10px; margin-top: 8px"><i
+                                        class='bx bx-x' style="margin-top: -3px"></i>
+                                    <?php echo $row_job_skills['name'] . ' (' . $row_job_skills['skill_level'] . ')' ?></span></a>
+                            <?php endwhile; ?>
+                        </div>
+                        <h6 class="mt-4">Adicionar Habilidade</h6>
+                        <hr class="my-0">
+                        <form action="data_add_skill_job.php" method="POST" id="form-skills">
+                            <input type="hidden" name="job_id_skill" value="<?php echo $_GET['id'] ?>">
+                            <?php include("./utils/input_job_skills.php") ?>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php include("./partials/_footer_user_profile.php") ?>
+</div>
+<?php include("./partials/_footer_user_profile.php") ?>
 </div>
