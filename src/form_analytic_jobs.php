@@ -218,6 +218,15 @@ $result_jobs = mysqli_query($conection, $sql_jobs);
                                                     <a class="dropdown-item"
                                                         href="?main_menu=analytic_user_jobs&id=<?php echo $row_jobs['id'] ?>"><i
                                                             class="bx bx-analyse me-1"></i> Análise</a>
+                                                    <?php
+                                                    $sql_select_users_exist = 'SELECT * FROM select_job_users WHERE job_id = ' . $row_jobs['id'];
+                                                    $result_select_users_exist = mysqli_query($conection, $sql_select_users_exist);                                                    
+                                                    ?>
+                                                    <?php if($result_select_users_exist->num_rows > 0): ?>
+                                                        <a class="dropdown-item"
+                                                        href="?main_menu=selected_users&id=<?php echo $row_jobs['id'] ?>"><i
+                                                            class="bx bxs-star me-1"></i> Selecionados</a>
+                                                    <?php endif; ?>
                                                     <a class="dropdown-item"
                                                         href="data_delete_job.php?id=<?php echo $row_jobs['id'] ?>"><i
                                                             class="bx bx-trash me-1"></i> Deletar</a>

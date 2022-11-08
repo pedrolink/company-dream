@@ -276,6 +276,12 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                     include 'form_admin_panel.php';
                 }
             }
+
+            if ($_GET['main_menu'] == 'selected_users') {
+                if($_SESSION['user_permission'] == 1 or $_SESSION['user_permission'] == 2){
+                    include 'form_selected_users.php';
+                }
+            }
         }
         ?>
             </div>
