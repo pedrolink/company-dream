@@ -23,7 +23,7 @@
                     <span class="badge bg-label-primary"><?php echo $row_skills_user['name'] ?></span>
                     <?php endwhile; ?>
                     <p style="margin-top: 10px">Descrição</p>
-                    <textarea class="form-control" name="description" cols="30" rows="5" required></textarea>
+                    <textarea class="form-control" name="description" cols="30" rows="5"></textarea>
                     <p style="margin-top: 15px">Avaliação</p>
                     <a href="javascript:void(0)" onclick="functionStar('one', <?php echo $row_user['users_id'] ?>)"><i id="start1_<?php echo $row_user['users_id'] ?>"
                             class='bx bx-star'></i></a>
