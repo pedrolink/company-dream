@@ -89,7 +89,7 @@
                                     ?>
                             <?php while($row_user_skills = mysqli_fetch_array($result_user_skills)): ?>
                             <a href="data_delete_skill_user.php?id_skill=<?php echo $row_user_skills['id'] ?>"><span
-                                    class="badge bg-label-primary" style="margin-left: 10px"><i class='bx bx-x'
+                                    class="badge bg-label-primary" style="margin-left: 10px; margin-top: 8px"><i class='bx bx-x'
                                         style="margin-top: -3px"></i>
                                     <?php echo $row_user_skills['name'] . ' (' . $row_user_skills['skill_level'] . ')' ?></span></a>
                             <?php endwhile; ?>

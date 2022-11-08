@@ -22,12 +22,12 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
             <?php echo $row_analytic_users_job['name'] ?></h4>
 
         <div class="row">
-            <div class="col-md-12">                
+            <div class="col-md-12">
                 <div class="card-body">
                     <div class="row mb-5">
-                    <?php while($row_candidates = mysqli_fetch_array($result_candidates)): ?>
-                <?php
-                    $sql_user = 'SELECT * FROM users
+                        <?php while($row_candidates = mysqli_fetch_array($result_candidates)): ?>
+                        <?php
+                    $sql_user = 'SELECT *, users.id as users_id FROM users
                                  INNER JOIN user_experience ON users.id = user_experience.user_id
                                  INNER JOIN english_levels ON user_experience.english_level = english_levels.id_english
                                  INNER JOIN carrers_focus ON user_experience.carrer_focus = carrers_focus.id_carrer
@@ -44,18 +44,18 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                                     <h6 class="card-subtitle text-muted"><?php echo $row_user['email'] ?></h6>
 
                                     <?php if ($row_user['user_image']) : ?>
-                                        <!-- IMAGEM DO USUÁRIO -->
-                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img
-                                                class="img-fluid d-flex mx-auto my-4"
-                                                src="./images/user/<?php echo $row_user['user_image'] ?>"
-                                                alt="Card image cap"></a>
+                                    <!-- IMAGEM DO USUÁRIO -->
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row_user['users_id'] ?>"><img
+                                            class="img-fluid d-flex mx-auto my-4"
+                                            src="./images/user/<?php echo $row_user['user_image'] ?>"
+                                            alt="Card image cap"></a>
                                     <?php else: ?>
-                                        <!-- IMAGEM DO USUÁRIO -->
-                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal"><img
-                                                class="img-fluid d-flex mx-auto my-4"
-                                                src="../assets/img/avatars/default-avatar-1.png" alt="Card image cap"></a>
-                                    <?php endif ?>
-                                    
+                                    <!-- IMAGEM DO USUÁRIO -->
+                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row_user['users_id'] ?>"><img
+                                            class="img-fluid d-flex mx-auto my-4"
+                                            src="../assets/img/avatars/default-avatar-1.png" alt="Card image cap"></a>
+                                    <?php endif ?>                                    
+
                                     <!-- <p class="card-text">Telefone <?php echo $row_user['phone_number'] ?></p> -->
                                     <a class="card-link" href="<?php echo $row_user['url_linkedin'] ?>"
                                         target="_blank"><i style="margin-top: -2px"
@@ -64,11 +64,11 @@ $result_candidates = mysqli_query($conection, $sql_candidates);
                                 </div>
                             </div>
                         </div>
-                        <?php include('./popups/popup_user_analytic.php') ?>
-                <?php endwhile ?>
+                        <?php include('./popups/popup_user_analytic.php'); ?>                           
+                        <?php endwhile ?>                        
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

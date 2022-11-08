@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<div class="modal fade" id="exampleModal<?php echo $row_user['users_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     style="margin-top: 150px">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -15,7 +15,7 @@
                 <?php
                 $sql_skills_user = 'SELECT * FROM user_skills 
                 INNER JOIN skills ON user_skills.skill_id = skills.id
-                WHERE user_id = ' . $row_user['id'];
+                WHERE user_id = ' . $row_user['users_id'];
                 $result_skills_user = mysqli_query($conection, $sql_skills_user);
                 ?>
                 <?php while($row_skills_user = mysqli_fetch_array($result_skills_user)): ?>
@@ -23,7 +23,7 @@
                 <?php endwhile; ?>
             </div>
             <div class="modal-footer">
-                <a href="data_talent_bank.php?user_id=<?php echo $row_user['id'] ?>&job_id=<?php echo $job_id ?>" type="button"
+                <a href="data_talent_bank.php?user_id=<?php echo $row_user['users_id'] ?>&job_id=<?php echo $job_id ?>" type="button"
                     class="btn btn-primary">Banco de talentos</a>
                 <a href="" type="button" class="btn btn-success">Selecionar candidato</a>
             </div>
