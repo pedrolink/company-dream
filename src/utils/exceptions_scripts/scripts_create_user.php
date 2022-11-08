@@ -1,8 +1,4 @@
 <!-- VERIFICA SE USUÁRIO EXISTE -->
-<script>
-    const user = document.getElementById('user').className = "form-control";
-    const email = document.getElementById('email').className = "form-control";
-</script>
 <?php 
 
 if(isset($_SESSION['user_exist'])):

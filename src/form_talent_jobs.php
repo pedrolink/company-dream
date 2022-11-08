@@ -50,6 +50,7 @@ $result_jobs_talent_bank = mysqli_query($conection, $sql_jobs_talent_bank);
                         <th>Experiência</th>
                         <th>Inglês</th>
                         <th>Foco da Carreira</th>
+                        <th>Avaliação</th>
                         <th>LinkedIn</th>
                       </tr>
                     </thead>
@@ -66,7 +67,7 @@ $result_jobs_talent_bank = mysqli_query($conection, $sql_jobs_talent_bank);
                             $result_user_talent_bank = mysqli_query($conection, $sql_user_talent_bank);
                             $row_user_talent_bank = mysqli_fetch_array($result_user_talent_bank);
                           ?>
-                      <tr>
+                      <tr data-bs-toggle="modal" data-bs-target="#talentModal<?php echo $row_users_talent_bank['user_id'] ?>">
                         <td><i class="fab fa-angular fa-lg text-danger"></i>
                           <strong><?php echo $row_user_talent_bank['first_name'] . ' ' . $row_user_talent_bank['last_name'] ?></strong>
                         </td>
@@ -75,9 +76,39 @@ $result_jobs_talent_bank = mysqli_query($conection, $sql_jobs_talent_bank);
                         <td><?php echo $row_user_talent_bank['name_experience'] ?></td>
                         <td><?php echo $row_user_talent_bank['name_english'] ?></td>
                         <td><?php echo $row_user_talent_bank['name_carrer'] ?></td>
+                        <td>
+                          <?php 
+                          if($row_users_talent_bank['avaliation'] == 1){
+                            echo "<i class='bx bxs-star'></i>";
+                          } 
+                          if($row_users_talent_bank['avaliation'] == 2){
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                          }
+                          if($row_users_talent_bank['avaliation'] == 3){
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                          }
+                          if($row_users_talent_bank['avaliation'] == 4){
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                          }
+                          if($row_users_talent_bank['avaliation'] == 5){
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                            echo "<i class='bx bxs-star'></i>";
+                          }
+                          ?>
+                        </td>
                         <td><a href="<?php echo $row_user_talent_bank['url_linkedin'] ?>" target="_blank"><i
                               style="margin-top: -2px" class="bx bxl-linkedin-square me-1"></i> LinkedIn</a></td>
                       </tr>
+                      <?php include('./popups/popup_talent_user_description.php'); ?>
                       <?php endwhile; ?>
                       <?php else: ?>
                         <td>Nenhum candidato</td>

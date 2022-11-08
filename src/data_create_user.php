@@ -56,7 +56,7 @@ if ($message_errors >= 1){
     exit;
 }
 
-$query_insert_user = "INSERT INTO users (name, user, password, create_date, email, accept_terms) 
+$query_insert_user = "INSERT INTO users (first_name, user, password, create_date, email, accept_terms) 
                       VALUES ('$name', '$user', '$password', NOW(), '$email', $accept_terms)";
 
 if($conection->query($query_insert_user) === TRUE){

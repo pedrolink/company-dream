@@ -11,14 +11,21 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">Minhas Candidaturas</h4>
+        <h4 class="fw-bold py-3 mb-4">Minhas Candidaturas</h4>
+        <?php if ($result_jobs_user->num_rows > 0): ?>
         <?php while($row_jobs_user = mysqli_fetch_array($result_jobs_user)): ?>
         <div class="row mb-5">
             <div class="col-md">
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-2">
-                            <img class="card-img card-img-left" src="../assets/img/elements/12.jpg" alt="Card image">
+                            <?php if($row_jobs_user['job_image']): ?>
+                            <img class="card-img card-img-left"
+                                src="./images/jobs/<?php echo $row_jobs_user['job_image'] ?>" alt="Card image">
+                            <?php else: ?>
+                            <img class="card-img card-img-left" src="./assets/img/illustrations/not_found_job.jpg"
+                                alt="Card image">
+                            <?php endif; ?>
                         </div>
                         <div class="col-md-10">
                             <div class="card-body">
@@ -28,8 +35,6 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
                                     class="btn rounded-pill btn-outline-secondary text-end">
                                     <span class="tf-icons bx bx-show"></span>&nbsp; Visualizar
                                 </a>
-                                <p class="card-text" style="margin-top: 45px"><small class="text-muted">Last updated 3
-                                        mins ago</small></p>
                             </div>
                         </div>
                     </div>
@@ -37,5 +42,18 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
             </div>
         </div>
         <?php endwhile; ?>
+        <? else: ?>
+        <?php include('./utils/not_found_message.php'); ?>
+        <? endif; ?>
     </div>
 </div>
+
+<script>
+    document.getElementById('menu-my-candidancy').className = 'menu-item active';
+    document.getElementById('menu-home').className = 'menu-item';
+    document.getElementById('menu-tools').className = 'menu-item';
+    document.getElementById('menu-create-job').className = 'menu-item';
+    document.getElementById('menu-analytic-jobs').className = 'menu-item';
+    document.getElementById('menu-admin-panel').className = 'menu-item';    
+    document.getElementById('menu-gest').className = 'menu-item';
+</script>

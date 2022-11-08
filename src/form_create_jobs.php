@@ -18,7 +18,7 @@
                     <h5 class="card-header">Informações da Vaga</h5>
                     <hr class="my-0">
                     <div class="card-body">
-                        <form action="data_create_job.php" method="POST">
+                        <form action="data_create_job.php" method="POST" enctype="multipart/form-data">
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
@@ -102,8 +102,16 @@
                                         rows="3"></textarea>
                                 </div>
 
+                                <label for="descriptionUser" class="form-label">Selecione uma imagem para a vaga</label>
+                                <div class="mb-3 col-md-12">
+                                    <input type="file" id="job_image" name="job_image" class="account-file-input"
+                                        accept="image/png, image/jpeg">
+                                </div>
+
                                 <h6 class="mt-4">Habilidades da Vaga</h6>
                                 <hr class="my-0">
+
+                                <?php include('./utils/input_jobs_skills.php') ?>
 
                                 <div class="mt-4">
                                     <button type="submit" class="btn btn-primary me-2">Salvar alterações</button>
@@ -123,3 +131,13 @@
 
     <div class="content-backdrop fade"></div>
 </div>
+
+<script>
+    document.getElementById('menu-home').className = 'menu-item';
+    document.getElementById('menu-tools').className = 'menu-item active open';
+    document.getElementById('menu-create-job').className = 'menu-item active';
+    document.getElementById('menu-analytic-jobs').className = 'menu-item';
+    document.getElementById('menu-admin-panel').className = 'menu-item';
+    document.getElementById('menu-my-candidancy').className = 'menu-item';
+    document.getElementById('menu-gest').className = 'menu-item';
+</script>

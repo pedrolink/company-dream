@@ -1,6 +1,4 @@
-<option value="1">JavaScript</option>
-<option value="2">Python</option>
-<option value="3">Docker</option>
-<option value="4">Bootstrap</option>
-<option value="5">PHP</option>
-<option value="6">ReactJS</option>
+<option value="1">Python</option>
+<option value="2">JavaScript</option>
+<option value="3">SQL</option>
+<option value="4">Docker</option>

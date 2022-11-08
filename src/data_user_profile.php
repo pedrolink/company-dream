@@ -16,12 +16,10 @@ $url_linkedin = trim($_POST['url_linkedin']);
 $url_cloud = trim($_POST['url_cloud']);
 $user_description = trim($_POST['user_description']);
 
-$user_image = $_FILES['file'];
+$user_image = $_FILES['user_image'];
 $file_temp = $user_image['tmp_name'];
 $file_size = $user_image['size'];
-$location = 'images/user/';
-
-// $user_image = trim($_POST['user_image']);
+$location = './images/user/';
 
 
 // $email = trim($_POST['email']);
@@ -43,10 +41,11 @@ if ($file_size <= 0){
     $new_name_image = trim($_POST['input_user_image']);
 } else {
     $new_name_image = date("dmy") . time() . $user_image["name"];
-    $archive_image = 'images/profile_images/' . $row_user['user_image'];
-    $delete_image = unlink($archive_image);
+    if ($row_user['user_image']){
+        $archive_image = './images/user/' . $row_user['user_image'];
+        $delete_image = unlink($archive_image);
+    }
 }
-
 
 //TODO: Atualiza informações do perfil do usuário
 $sql_update_user = 'UPDATE users SET first_name = "' . $first_name . '", last_name = "' . $last_name .

@@ -20,6 +20,6 @@ if ($result_user_permisson->num_rows > 0) {
 
 $conection->close();
 header('Location: form_painel.php?main_menu=analytic_jobs');
-
+exit;
 
 ?>
