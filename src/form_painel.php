@@ -127,22 +127,22 @@ $row_user_experience = mysqli_fetch_array($result_user_experience);
                         </a>
                     </div>
 
-                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse" style="width: 100%">
                         <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <form method="GET" id="search_form">
-                                <div class="nav-item d-flex align-items-center">
+                        <div class="navbar-nav align-items-center" style="width: 100%">
+                            <form method="GET" id="search_form" style="width: 100%">
+                                <div class="nav-item d-flex align-items-center" style="width: 100%">
                                     <i class="bx bx-search fs-4 lh-0"></i>
                                     <?php
                                     if (empty($_GET['main_menu']) or $_GET['main_menu'] == 'jobs'):
                                     ?>
                                     <input type="text" class="form-control border-0 shadow-none" name="search"
                                         id="search" placeholder="Procurar..." aria-label="Procurar..."
-                                        style="width: 1250px;">
+                                        style="width: 100%;">
                                     <?php else: ?>
                                     <input type="text" class="form-control border-0 shadow-none" name="search"
                                         id="search" placeholder="Desabilitado para procura nesta guia..."
-                                        aria-label="Procurar..." style="width: 1250px; background-color: #fff" disabled>
+                                        aria-label="Procurar..." style="width: 100%; background-color: #fff" disabled>
                                     <?php endif; ?>
                                 </div>
                             </form>
