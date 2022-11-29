@@ -20,7 +20,6 @@ while ($row_candidates_vacancy = $result_candidates_vacancy->fetch_assoc()) {
     $result_rh_jobs_skills = mysqli_query($conection, $sql_rh_jobs_skills);
 
     foreach($result_rh_jobs_skills as $row_job_skill) {
-
         // SQL COMPARA HABILIDADE USUÁRIO
         $sql_compare_skills = 'SELECT * FROM user_skills WHERE user_id = "' . $row_candidates_vacancy['id_user'] . '" AND skill_id = "' . $row_job_skill['skill_id'] . '" AND skill_level >= "' . $row_job_skill['skill_level'] . '"';
         $result_compare_skills = $conection->query($sql_compare_skills);
@@ -28,7 +27,7 @@ while ($row_candidates_vacancy = $result_candidates_vacancy->fetch_assoc()) {
         if ($result_compare_skills->num_rows > 0) {
             $points += 1;
         }
-      }
+    }
       
     
     // EXPERIÊNCIAS USUÁRIO

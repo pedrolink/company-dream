@@ -12,6 +12,4 @@ if ($conection -> connect_errno) {
   exit();
 }
 
-
-
 ?>

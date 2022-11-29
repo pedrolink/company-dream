@@ -14,7 +14,7 @@ $result_jobs_user = mysqli_query($conection, $sql_jobs_user);
         <h4 class="fw-bold py-3 mb-4">Minhas Candidaturas</h4>
         <?php if ($result_jobs_user->num_rows > 0): ?>
         <?php while($row_jobs_user = mysqli_fetch_array($result_jobs_user)): ?>
-        <div class="row mb-5">
+        <div class="row mb-5" style="margin-top: -25px">
             <div class="col-md">
                 <div class="card mb-3">
                     <div class="row g-0">
