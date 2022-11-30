@@ -2,7 +2,7 @@
 
 Documentação de como rodar a plataforma.
 
-## DOCKER
+## Docker
 
 Dentro do diretório company-dream, rodar os seguintes comandos.
 
