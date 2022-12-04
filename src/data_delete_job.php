@@ -4,7 +4,7 @@ include("conection.php");
 
 $job_id = trim($_GET['id']);
 
-$sql_user_permission = 'SELECT * FROM users WHERE user = "' . $_SESSION['user'] . '" AND type_permission = 0';
+$sql_user_permission = 'SELECT * FROM users WHERE user = "' . $_SESSION['user'] . '" AND type_permission = 1 OR type_permission = 2';
 $result_user_permisson = mysqli_query($conection, $sql_user_permission);
 
 if ($result_user_permisson->num_rows > 0) {

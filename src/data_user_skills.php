@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("conection.php");
-dfsadasdas
 
 $carrer_focus = trim($_POST['carrer_focus']);
 $experience_level = trim($_POST['experience_level']);

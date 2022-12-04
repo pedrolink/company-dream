@@ -1,5 +1,5 @@
 <?php
-$sql_jobs_talent_bank = 'SELECT * FROM rh_jobs';
+$sql_jobs_talent_bank = 'SELECT * FROM rh_jobs ORDER BY id DESC';
 $result_jobs_talent_bank = mysqli_query($conection, $sql_jobs_talent_bank);
 
 ?>
