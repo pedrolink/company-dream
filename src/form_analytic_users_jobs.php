@@ -8,8 +8,10 @@ WHERE id = ' . $job_id;
 $result_analytic_users_job = mysqli_query($conection, $sql_analytic_users_job);
 $row_analytic_users_job = mysqli_fetch_array($result_analytic_users_job);
 
-$sql_candidates = 'SELECT * FROM candidates_vacancy WHERE id_job = "' . $job_id . '" ORDER BY points';
+$sql_candidates = 'SELECT * FROM candidates_vacancy WHERE id_job = "' . $job_id . '" ORDER BY points DESC';
 $result_candidates = mysqli_query($conection, $sql_candidates);
+
+include("./script_points.php");
 ?>
 
 <div class="content-wrapper">

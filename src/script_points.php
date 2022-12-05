@@ -1,8 +1,4 @@
 <?php
-session_start();
-include("conection.php");
-
-$job_id = trim($_GET['job_id']);
 
 // SQL's PARA SCRIPT POINTS
 
@@ -73,5 +69,4 @@ while ($row_candidates_vacancy = $result_candidates_vacancy->fetch_assoc()) {
     $result_update_points = $conection->query($sql_update_points);
 }
 
-$conection->close();
 ?>
